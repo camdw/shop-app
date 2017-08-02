@@ -1,3 +1,13 @@
 <p>
   product-details works!
 </p>
+
+<h1>{{ product?.title }}</h1>
+<div class='single-list'>
+   <img src="http://images.nicethings.es/ecommerce/024/{{product.mpn}}_{{product.color[0].code}}_M.jpg" height=300px/>
+   <img src="http://images.nicethings.es/ecommerce/024/{{product.mpn}}_{{product.color[0].code}}_2_M.jpg" height=300px/>
+   <img src="http://images.nicethings.es/ecommerce/024/{{product.mpn}}_{{product.color[0].code}}_3_M.jpg" height=300px/>
+   <img src="http://images.nicethings.es/ecommerce/024/{{product.mpn}}_{{product.color[0].code}}_4_M.jpg" height=300px/>
+   
+    <p>{{ product.price }}€ - NOW {{ product.sale_price }}€</p>
+</div> 

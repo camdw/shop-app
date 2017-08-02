@@ -15,4 +15,9 @@ getList() {
       .map((res) => res.json());
   }
 
+getProduct(id) {
+  return this.http.get(`${this.BASE_URL}/products/${id}`)
+      .map((res) => res.json());
+  }
+
 }
