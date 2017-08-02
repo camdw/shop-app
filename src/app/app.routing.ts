@@ -8,5 +8,4 @@ import { SideMenuComponent } from './components/side-menu/side-menu.component';
 export const routes: Routes = [
   { path: '', component: ProductListComponent },
   { path: 'products/:id', component: ProductDetailsComponent },
-  { path: '**', redirectTo: '' }
 ];
