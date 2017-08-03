@@ -58,4 +58,8 @@ export class ProductDetailsComponent implements OnInit {
   });
   }
 
+    clickedColor(code) {
+      console.log(code)
+    }
+
 }
