@@ -11,9 +11,11 @@ import { ActivatedRoute } from '@angular/router';
 export class ProductDetailsComponent implements OnInit {
 
   product;
-  productSelectedColor;
   productColors = [];
   productSizes;
+  productSelectedColor;
+  productSelectedSize;
+
 
    constructor(
     private route: ActivatedRoute,
@@ -60,6 +62,11 @@ export class ProductDetailsComponent implements OnInit {
 
     clickedColor(code) {
       this.productSelectedColor = code;
+    }
+
+    clickedSize(size) {
+      this.productSelectedSize = size;
+      console.log(this.productSelectedSize)
     }
 
 }

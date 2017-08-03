@@ -4,8 +4,10 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { TopMenuComponent } from './components/top-menu/top-menu.component';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
+import { LoginComponent } from './components/login/login.component';
 
 export const routes: Routes = [
   { path: '', component: ProductListComponent },
   { path: 'products/:id', component: ProductDetailsComponent },
+  { path: 'login', component: LoginComponent}
 ];

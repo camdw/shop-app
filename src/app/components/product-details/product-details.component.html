@@ -16,7 +16,7 @@
           <div (click)="clickedColor(productColor)"><img src="http://images.nicethings.es/ecommerce/opciones/{{product?.mpn}}_{{productColor}}.jpg" height=50px/></div> 
       </div>
       <div *ngFor="let productSize of productSizes">
-       <p>{{productSize}}</p>
+       <div (click)="clickedSize(productSize)">{{productSize}}</div>
       </div>
     </div>
 </div>  
