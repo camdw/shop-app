@@ -3,11 +3,18 @@
 </p>
 
 <h1>{{ product?.title }}</h1>
-<div class='single-list'>
-   <img src="http://images.nicethings.es/ecommerce/024/{{product.mpn}}_{{product.color[0].code}}_M.jpg" height=300px/>
-   <img src="http://images.nicethings.es/ecommerce/024/{{product.mpn}}_{{product.color[0].code}}_2_M.jpg" height=300px/>
-   <img src="http://images.nicethings.es/ecommerce/024/{{product.mpn}}_{{product.color[0].code}}_3_M.jpg" height=300px/>
-   <img src="http://images.nicethings.es/ecommerce/024/{{product.mpn}}_{{product.color[0].code}}_4_M.jpg" height=300px/>
+<div class='single-product'>
+   <img src="http://images.nicethings.es/ecommerce/024/{{product?.mpn}}_{{productSelectedColor}}_M.jpg" height=300px/>
+   <img src="http://images.nicethings.es/ecommerce/024/{{product?.mpn}}_{{productSelectedColor}}_2_M.jpg" height=300px/>
+   <img src="http://images.nicethings.es/ecommerce/024/{{product?.mpn}}_{{productSelectedColor}}_3_M.jpg" height=300px/>
+   <img src="http://images.nicethings.es/ecommerce/024/{{product?.mpn}}_{{productSelectedColor}}_4_M.jpg" height=300px/>
    
-    <p>{{ product.price }}€ - NOW {{ product.sale_price }}€</p>
-</div> 
+    <p>{{ product?.price }}€ - NOW {{ product?.sale_price }}€</p>
+
+     <div class=color-options>
+       <h2>{{productColors}}</h2>
+      <div *ngFor="let productColor of productColors">
+          <img src="http://images.nicethings.es/ecommerce/opciones/{{product?.mpn}}_{{productColor}}.jpg" height=50px/>  
+      </div>
+    </div>
+</div>  
