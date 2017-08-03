@@ -1,3 +1,22 @@
 <p>
   signup works!
 </p>
+
+<h2>Sign Up</h2>
+
+<form>
+  <div *ngIf="error">
+    {{ error }}
+  </div>
+  <p>
+    <label for="email">Email</label>
+    <input type="text" [(ngModel)]="user.email" name="email" required>
+  </p>
+
+  <p>
+    <label for="password">Password</label>
+    <input type="text" [(ngModel)]="user.password" name="password" required>
+  </p>
+
+  <button (click)="signup()">Sign Up</button>
+</form>

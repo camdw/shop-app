@@ -75,6 +75,18 @@ export class SessionService implements CanActivate {
     this.isAuthenticated = false;
     localStorage.removeItem('token');
 
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
+  }
+
+  signup(user) {
+    return this.http.post(`${this.BASE_URL}/signup`, user)
+      .map(res => {
+        let json = res.json();
+        let token = json.token;
+        let user = json.user;
+        
+        return this.isAuthenticated;
+
+      }).catch(this.handleError);
   }
 }
