@@ -10,7 +10,7 @@ import { SessionService } from '../../services/session.service';
 export class LoginComponent implements OnInit {
   
   user: Object = {
-		username: '',
+		email: '',
 		password: '',
   }
   

@@ -58,7 +58,7 @@ export class SessionService implements CanActivate {
           this.token = token;
           this.user = {
             _id: user.id,
-            username: user.username
+            email: user.email
           }
           this.isAuthenticated = true;
           localStorage.setItem('token', this.token);

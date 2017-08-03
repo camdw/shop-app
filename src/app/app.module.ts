@@ -15,6 +15,7 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import { TopMenuComponent } from './components/top-menu/top-menu.component';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { LoginComponent } from './components/login/login.component';
     ProductDetailsComponent,
     TopMenuComponent,
     SideMenuComponent,
-    LoginComponent
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
