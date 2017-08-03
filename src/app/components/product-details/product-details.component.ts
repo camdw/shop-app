@@ -23,7 +23,8 @@ export class ProductDetailsComponent implements OnInit {
 
     this.route.params.subscribe(params => {
       this.getProductDetails(params['id']);
-      this.getProductColors(params['id'])      
+      this.getProductColors(params['id']);
+      this.getProductSizes(params['id']);   
     });
   }
 
@@ -43,6 +44,17 @@ export class ProductDetailsComponent implements OnInit {
         temp.push(color.code);
       }
         this.productColors = temp;
+  });
+  }
+
+    getProductSizes(id) {
+    this.productService.getProduct(id)
+      .subscribe((theProduct) => {
+        let temp = [];
+      for (let size of theProduct.size) {
+        temp.push(size);
+      }
+        this.productSizes = temp;
   });
   }
 

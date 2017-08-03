@@ -12,9 +12,11 @@
     <p>{{ product?.price }}€ - NOW {{ product?.sale_price }}€</p>
 
      <div class=color-options>
-       <h2>{{productColors}}</h2>
       <div *ngFor="let productColor of productColors">
           <img src="http://images.nicethings.es/ecommerce/opciones/{{product?.mpn}}_{{productColor}}.jpg" height=50px/>  
+      </div>
+      <div *ngFor="let productSize of productSizes">
+       <p>{{productSize}}</p>
       </div>
     </div>
 </div>  
