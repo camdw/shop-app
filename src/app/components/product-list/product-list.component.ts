@@ -9,6 +9,8 @@ import { ProductsService } from '../../services/products.service'
 export class ProductListComponent implements OnInit {
 
   products;
+  productSelectedColor;
+  productCategories;
 
   constructor(private productService: ProductsService) { }
 
@@ -17,8 +19,13 @@ export class ProductListComponent implements OnInit {
     this.productService.getList()
       .subscribe((products) => {
         this.products = products;
-      })
+    });
+   }
 
-  }
+
+  clickedColor(code) {
+      this.productSelectedColor = code;
+      console.log(this.productSelectedColor)
+    }
 
 }

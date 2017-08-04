@@ -1,3 +1,4 @@
-<p>
-  top-menu works!
-</p>
+<nav>
+  <div *ngFor = "let category of productCategories">
+    <a href="http://localhost:4200/{{category}}">{{ category }}</a></div>
+</nav>

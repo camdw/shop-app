@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductsService } from '../../services/products.service'
 
 @Component({
   selector: 'app-top-menu',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopMenuComponent implements OnInit {
 
-  constructor() { }
+  productCategories;
+
+  constructor(private productService: ProductsService) { }
 
   ngOnInit() {
-  }
 
+    this.productService.getList()
+      .subscribe((products) => {
+        this.getProductCategories(products)
+    });
+   }
+
+  getProductCategories(products) {
+      let temp = [];
+      for (let product of products) {
+        if (temp.indexOf(product.category) == -1) {
+          temp.push(product.category);
+        }
+      }
+        this.productCategories = temp;
+  };
 }
