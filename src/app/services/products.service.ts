@@ -20,4 +20,9 @@ getProduct(id) {
       .map((res) => res.json());
   }
 
+getCategory(category) {
+  return this.http.get(`${this.BASE_URL}/category/${category}`)
+      .map((res) => res.json());
+  }
+
 }

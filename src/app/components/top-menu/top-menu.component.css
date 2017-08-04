@@ -4,3 +4,29 @@ nav {
     background-color: beige;
     border: solid black 1px;
 }
+
+.categories {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: stretch;
+    align-items: center;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.category {
+    order: 0;
+    flex: 0 1 auto;
+    align-self: auto;
+    width: 30%;
+}
+
+.login {
+    position: relative;
+    text-align: center;
+    float: right;
+    margin: 5px;
+
+}

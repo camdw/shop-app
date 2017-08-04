@@ -11,5 +11,6 @@ import { SessionService } from './services/session.service'
 export const routes: Routes = [
   { path: '', component: ProductListComponent },
   { path: 'products/:id', component: ProductDetailsComponent },
-  { path: 'login', component: LoginComponent}
+  { path: 'login', component: LoginComponent},
+  { path: ':category', component: SideMenuComponent},
 ];

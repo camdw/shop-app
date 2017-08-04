@@ -1,4 +1,16 @@
-<nav>
-  <div *ngFor = "let category of productCategories">
-    <a href="http://localhost:4200/{{category}}">{{ category }}</a></div>
-</nav>
+ <nav>
+
+   <div class="home">
+    <a href="http://localhost:4200/">Home</a>
+  </div>
+
+  <div class= "categories">
+    <div class="category" *ngFor = "let category of productCategories">
+      <a href="http://localhost:4200/{{category}}">{{ category }}</a>
+    </div>
+  </div>
+  
+  <div class="login">
+    <a href="http://localhost:4200/login">Login/Signup</a>
+  </div>
+</nav> 
