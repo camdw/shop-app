@@ -3,13 +3,13 @@ import { ProductsService } from '../../services/products.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-side-menu',
-  templateUrl: './side-menu.component.html',
-  styleUrls: ['./side-menu.component.css']
+  selector: 'app-category',
+  templateUrl: './category.component.html',
+  styleUrls: ['./category.component.css']
 })
 
 
-export class SideMenuComponent implements OnInit {
+export class CategoryComponent implements OnInit {
 
 products = []
 

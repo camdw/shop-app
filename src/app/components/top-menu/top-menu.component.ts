@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../services/products.service'
+import { SessionService } from '../../services/session.service';
 
 @Component({
   selector: 'app-top-menu',
@@ -12,7 +13,11 @@ export class TopMenuComponent implements OnInit {
 
   constructor(private productService: ProductsService) { }
 
+  user: any = false;
+
   ngOnInit() {
+ 
+    this.user = localStorage.getItem('token')
 
     this.productService.getList()
       .subscribe((products) => {

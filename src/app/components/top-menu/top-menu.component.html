@@ -11,6 +11,11 @@
   </div>
   
   <div class="login">
+    <div *ngIf="user">
+      <h2> You are now logged in as {{ user.firstname }}!! </h2>
+    </div>
+    <div *ngIf="!user">
     <a href="http://localhost:4200/login">Login/Signup</a>
+    </div>
   </div>
 </nav> 

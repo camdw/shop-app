@@ -19,6 +19,9 @@ export class SessionService implements CanActivate {
   ) { }
 
   handleError(e) {
+    
+    this.logout();
+    this.router.navigate(['/login']);
     return Observable.throw(e.json().message);
   }
 
@@ -34,6 +37,7 @@ export class SessionService implements CanActivate {
           if (data) {
             this.isAuthenticated = true;
             this.token = token;
+            this.user = JSON.parse(localStorage.getItem('user'))
             return true;
           }
           return false;
@@ -53,15 +57,20 @@ export class SessionService implements CanActivate {
         let json = res.json();
         let token = json.token;
         let user = json.user;
+        
+        console.log(token)
+        console.log("user from server", user)
 
         if (token) {
           this.token = token;
           this.user = {
-            _id: user.id,
+            _id: user._id,
             email: user.email
           }
           this.isAuthenticated = true;
           localStorage.setItem('token', this.token);
+          console.log("user", this.user);
+          localStorage.setItem('user', JSON.stringify(this.user))
         }
         
         return this.isAuthenticated;
@@ -93,3 +102,5 @@ export class SessionService implements CanActivate {
       }).catch(this.handleError);
   }
 }
+
+

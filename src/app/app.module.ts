@@ -13,9 +13,10 @@ import { AppComponent } from './app.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { TopMenuComponent } from './components/top-menu/top-menu.component';
-import { SideMenuComponent } from './components/side-menu/side-menu.component';
+import { CategoryComponent } from './components/category/category.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { MyAccountComponent } from './components/my-account/my-account.component';
 
 @NgModule({
   declarations: [
@@ -23,9 +24,10 @@ import { SignupComponent } from './components/signup/signup.component';
     ProductListComponent,
     ProductDetailsComponent,
     TopMenuComponent,
-    SideMenuComponent,
+    CategoryComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    MyAccountComponent
   ],
   imports: [
     BrowserModule,
