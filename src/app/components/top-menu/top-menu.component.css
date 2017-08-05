@@ -21,6 +21,7 @@ nav {
     flex: 0 1 auto;
     align-self: auto;
     width: 30%;
+    text-align: center;
 }
 
 .login {

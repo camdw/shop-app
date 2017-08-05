@@ -12,7 +12,7 @@
   
   <div class="login">
     <div *ngIf="user !== null">
-      <p> You are now logged in as {{ user.email }}!! </p>
+      <p> You are now logged in as {{ user.firstname }}!! </p>
       <a class='logout' (click)="logout()">Logout</a>
     </div>
     <div *ngIf="user === null">

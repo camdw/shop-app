@@ -11,14 +11,16 @@ export class SignupComponent implements OnInit {
   
   user: Object = {
 		email: '',
-		password: '',
+    password: '',
+    firstname: '',
+    lastname: ''
   }
   
   error = null;
 
   constructor(
     private session: SessionService,
-    private router: Router
+    private router: Router,
   ) { }
 
   ngOnInit() {

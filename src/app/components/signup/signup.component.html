@@ -8,6 +8,17 @@
   <div *ngIf="error">
     {{ error }}
   </div>
+
+  <p>
+    <label for="firstname">First Name</label>
+    <input type="text" [(ngModel)]="user.firstname" name="firstname" required>
+  </p>
+
+  <p>
+    <label for="lastname">Last name</label>
+    <input type="text" [(ngModel)]="user.lastname" name="lastname" required>
+  </p>
+
   <p>
     <label for="email">Email</label>
     <input type="text" [(ngModel)]="user.email" name="email" required>
