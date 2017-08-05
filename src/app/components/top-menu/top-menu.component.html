@@ -11,10 +11,10 @@
   </div>
   
   <div class="login">
-    <div *ngIf="user !== false">
+    <div *ngIf="user !== null">
       <p> You are now logged in as {{ user.email }}!! </p>
     </div>
-    <div *ngIf="user === false">
+    <div *ngIf="user === null">
     <a href="http://localhost:4200/login">Login/Signup</a>
     </div>
   </div>

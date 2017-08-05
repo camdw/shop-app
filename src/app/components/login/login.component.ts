@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SessionService } from '../../services/session.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private session: SessionService,
-    private router: Router
+    private router: Router,
+    private _location: Location
   ) { }
 
   ngOnInit() {
@@ -27,7 +29,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.session.login(this.user).subscribe(
       (data) => {
-        this.router.navigate(['/']);
+        this._location.back();
       },
       (err) => {
         this.error = err;
