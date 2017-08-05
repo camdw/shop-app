@@ -30,3 +30,8 @@ nav {
     margin: 5px;
 
 }
+
+a.logout {
+  text-decoration: underline;
+  cursor: pointer;
+}

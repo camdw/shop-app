@@ -13,6 +13,7 @@
   <div class="login">
     <div *ngIf="user !== null">
       <p> You are now logged in as {{ user.email }}!! </p>
+      <a class='logout' (click)="logout()">Logout</a>
     </div>
     <div *ngIf="user === null">
     <a href="http://localhost:4200/login">Login/Signup</a>

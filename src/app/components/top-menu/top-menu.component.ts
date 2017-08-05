@@ -11,28 +11,34 @@ export class TopMenuComponent implements OnInit {
 
   productCategories;
 
-  constructor(private productService: ProductsService) { }
+  constructor(private productService: ProductsService,
+              private sessionService: SessionService) { }
 
   user;
 
   ngOnInit() {
  
     this.user = JSON.parse(localStorage.getItem('user'));
-    console.log(this.user)
 
     this.productService.getList()
       .subscribe((products) => {
         this.getProductCategories(products)
     });
-   }
+  }
 
-  getProductCategories(products) {
+    getProductCategories(products) {
       let temp = [];
-      for (let product of products) {
+       for (let product of products) {
         if (temp.indexOf(product.category) == -1) {
           temp.push(product.category);
         }
       }
         this.productCategories = temp;
-  };
+    };
+
+    logout() {
+      this.sessionService.logout()
+      this.user = null;
+   }
+
 }

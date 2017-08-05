@@ -83,6 +83,7 @@ export class SessionService implements CanActivate {
     this.user = {}
     this.isAuthenticated = false;
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
 
     this.router.navigate(['/']);
   }
