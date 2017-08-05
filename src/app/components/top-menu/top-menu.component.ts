@@ -13,11 +13,11 @@ export class TopMenuComponent implements OnInit {
 
   constructor(private productService: ProductsService) { }
 
-  user: any = false;
+  user;
 
   ngOnInit() {
  
-    this.user = localStorage.getItem('token')
+    this.user = JSON.parse(localStorage.getItem('user'));
 
     this.productService.getList()
       .subscribe((products) => {
