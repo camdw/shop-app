@@ -39,7 +39,6 @@ export class TopMenuComponent implements OnInit {
     logout() {
       this.sessionService.logout()
       this.user = null;
-      
    }
 
 }

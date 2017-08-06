@@ -1,17 +1,23 @@
-<p>
-  product-list works!
-</p>
-
 <h1>Product list</h1>
-<div class='product-list'>
-  <div *ngFor="let product of products">
-     <img src="http://images.nicethings.es/ecommerce/024/{{product.mpn}}_{{product.color[0].code}}_M.jpg" height=300px/> 
-    <h3>{{ product.title }}</h3>
-    <p>{{ product.price }}€ - NOW {{ product.sale_price }}€</p>
-     <div class=color-options>
-      <div *ngFor="let color of product.color" >
-           <div (click)="clickedColor(color)"><img src="http://images.nicethings.es/ecommerce/opciones/{{product?.mpn}}_{{color.code}}.jpg" height=50px/></div>  
+<div class='product container'>
+  <div class='row'>
+    
+    <div class="product col-xs-6 col-md-4" *ngFor="let product of products">
+      <img class="product-image" src="http://images.nicethings.es/ecommerce/024/{{product.mpn}}_{{product.color[0].code}}_M.jpg" height=300px/> 
+      <h3 class="product-title">{{ product.title }}</h3>
+      <p class="product-price">{{ product.price }}€ - NOW {{ product.sale_price }}€</p>
+    
+      <div class="color-options">
+        <div class="color" *ngFor="let color of product.color" >
+          <div (click)="clickedColor(color)">
+            <img src="http://images.nicethings.es/ecommerce/opciones/{{product?.mpn}}_{{color.code}}.jpg" height=50px/>
+          </div>  
+        </div> 
+      </div>
+      <div class="details-favourite">
+        <a class="btn btn-default" [routerLink]="['/products', product._id]">View Details</a>
+        <a class="btn btn-default">Add to Favourites</a>
+      </div>
     </div> 
-    <a [routerLink]="['/products', product._id]">View Details</a>
   </div>
-</div> 
+</div>
