@@ -57,9 +57,6 @@ export class SessionService implements CanActivate {
         let json = res.json();
         let token = json.token;
         let user = json.user;
-        
-        console.log(token)
-        console.log("user from server", user)
 
         if (token) {
           this.token = token;
@@ -71,7 +68,6 @@ export class SessionService implements CanActivate {
           }
           this.isAuthenticated = true;
           localStorage.setItem('token', this.token);
-          console.log("user", this.user);
           localStorage.setItem('user', JSON.stringify(this.user))
         }
         
@@ -99,8 +95,6 @@ export class SessionService implements CanActivate {
 
         this.isAuthenticated = true;
         localStorage.setItem('token', this.token);
-        console.log("user", this.user);
-        console.log('token', this.token)
         localStorage.setItem('user', JSON.stringify(this.user))
       
 
@@ -108,6 +102,7 @@ export class SessionService implements CanActivate {
 
       }).catch(this.handleError);
   }
+
 }
 
 

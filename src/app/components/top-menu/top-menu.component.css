@@ -1,8 +1,32 @@
 nav {
-    height: 50px;
+    height: 100px;
     width: 100%;
     background-color: beige;
     border: solid black 1px;
+}
+
+.top-nav-menu {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-content: stretch;
+    align-items: center;
+}
+
+.home-link .logo .login {
+    order: 0;
+    flex: 0 1 auto;
+    align-self: auto;
+    width: 30%;
+}
+
+.home-link {
+    text-align: left;
+}
+
+.login {
+    text-align: right;
 }
 
 .categories {

@@ -19,4 +19,6 @@
        <div (click)="clickedSize(productSize)">{{productSize}}</div>
       </div>
     </div>
+    <p>{{ this.session.user }}</p>
+    <a class="btn btn-default" [routerLink]="['/myaccount', this.user?._id, 'favourites', product._id]">Add to Favourites</a>
 </div>  

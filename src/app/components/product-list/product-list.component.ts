@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from '../../services/products.service'
+import { Router, ActivatedRoute } from '@angular/router';
+import { Http } from '@angular/http';
+import { ProductsService } from '../../services/products.service';
+import {MyAccountService} from '../../services/my-account.service'
 
 @Component({
   selector: 'app-product-list',
@@ -11,8 +14,15 @@ export class ProductListComponent implements OnInit {
   products;
   productSelectedColor;
   productCategories;
+  user = JSON.parse(localStorage.getItem('user'))
 
-  constructor(private productService: ProductsService) { }
+  BASE_URL: string = 'http://localhost:3000';
+
+
+  constructor(private productService: ProductsService,
+              private account: MyAccountService,
+              private route: ActivatedRoute,
+              private http: Http ) { }
 
   ngOnInit() {
 
@@ -27,5 +37,6 @@ export class ProductListComponent implements OnInit {
       this.productSelectedColor = code;
       console.log(this.productSelectedColor)
     }
+
 
 }

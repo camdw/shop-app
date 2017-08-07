@@ -8,6 +8,7 @@ import { routes } from './app.routing';
 
 import { ProductsService } from './services/products.service';
 import { SessionService } from './services/session.service';
+import { MyAccountService } from './services/my-account.service'
 
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
@@ -33,9 +34,9 @@ import { MyAccountComponent } from './components/my-account/my-account.component
     BrowserModule,
     RouterModule.forRoot(routes),
     HttpModule,
-    FormsModule
+    FormsModule,
   ],
-  providers: [ProductsService, SessionService],
+  providers: [ProductsService, SessionService, MyAccountService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

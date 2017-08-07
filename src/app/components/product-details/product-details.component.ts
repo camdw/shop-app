@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
+import { SessionService } from '../../services/session.service'
 import { ActivatedRoute } from '@angular/router';
 
 
@@ -15,11 +16,13 @@ export class ProductDetailsComponent implements OnInit {
   productSizes;
   productSelectedColor;
   productSelectedSize;
+  user = JSON.parse(localStorage.getItem('user'))
 
 
    constructor(
     private route: ActivatedRoute,
-    private productService: ProductsService) { }
+    private productService: ProductsService,
+    private session: SessionService) { }
 
   ngOnInit() {
 

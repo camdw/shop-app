@@ -10,13 +10,13 @@
       <div class="color-options">
         <div class="color" *ngFor="let color of product.color" >
           <div (click)="clickedColor(color)">
-            <img src="http://images.nicethings.es/ecommerce/opciones/{{product?.mpn}}_{{color.code}}.jpg" height=50px/>
+            <img src="http://images.nicethings.es/ecommerce/opciones/{{product?.mpn}}_{{color.code}}.jpg" height=20px/>
           </div>  
         </div> 
       </div>
       <div class="details-favourite">
         <a class="btn btn-default" [routerLink]="['/products', product._id]">View Details</a>
-        <a class="btn btn-default">Add to Favourites</a>
+        <a class="btn btn-default" >Add to Favourites</a>
       </div>
     </div> 
   </div>

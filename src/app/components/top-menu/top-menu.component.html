@@ -1,22 +1,28 @@
  <nav>
 
-   <div class="home">
-    <a href="http://localhost:4200/">Home</a>
-  </div>
+  <div class="top-nav-menu">
+    <div class="home-link">
+      <a href="http://localhost:4200/">Home</a>
+    </div>
 
+    <img class="logo" src="http://images.nicethings.es/ecommerce/logo.jpg" height=50px/>
+    
+    <div class="login">
+      <div *ngIf="user !== null">
+        <p> Welcome {{ user.firstname }}! </p>
+        <a class='myaccount' href="http://localhost:4200/myaccount">My Account</a>
+        <a class='logout' (click)="logout()">Logout</a>
+      </div>
+      <div *ngIf="user === null">
+        <a href="http://localhost:4200/login">Login/Signup</a>
+      </div>
+    </div>
+  </div>
+  
   <div class= "categories">
     <div class="category" *ngFor = "let category of productCategories">
       <a href="http://localhost:4200/{{category}}">{{ category }}</a>
     </div>
   </div>
-  
-  <div class="login">
-    <div *ngIf="user !== null">
-      <p> You are now logged in as {{ user.firstname }}!! </p>
-      <a class='logout' (click)="logout()">Logout</a>
-    </div>
-    <div *ngIf="user === null">
-    <a href="http://localhost:4200/login">Login/Signup</a>
-    </div>
-  </div>
+
 </nav> 
