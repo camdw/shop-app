@@ -1,24 +1,31 @@
-<p>
-  product-details works!
-</p>
+<div class="product container">
+  <div class="row product-title"><h1>{{ product?.title }}</h1></div>
 
-<h1>{{ product?.title }}</h1>
-<div class='single-product'>
-   <img src="http://images.nicethings.es/ecommerce/024/{{product?.mpn}}_{{productSelectedColor}}_M.jpg" height=300px/>
-   <img src="http://images.nicethings.es/ecommerce/024/{{product?.mpn}}_{{productSelectedColor}}_2_M.jpg" height=300px/>
-   <img src="http://images.nicethings.es/ecommerce/024/{{product?.mpn}}_{{productSelectedColor}}_3_M.jpg" height=300px/>
-   <img src="http://images.nicethings.es/ecommerce/024/{{product?.mpn}}_{{productSelectedColor}}_4_M.jpg" height=300px/>
-   
-    <p>{{ product?.price }}€ - NOW {{ product?.sale_price }}€</p>
+  <div class='row product-images'>
+    <img src="http://images.nicethings.es/ecommerce/024/{{product?.mpn}}_{{productSelectedColor}}_M.jpg" height=300px/>
+    <img src="http://images.nicethings.es/ecommerce/024/{{product?.mpn}}_{{productSelectedColor}}_2_M.jpg" height=300px/>
+    <img src="http://images.nicethings.es/ecommerce/024/{{product?.mpn}}_{{productSelectedColor}}_3_M.jpg" height=300px/>
+    <img src="http://images.nicethings.es/ecommerce/024/{{product?.mpn}}_{{productSelectedColor}}_4_M.jpg" height=300px/>
+  </div>
 
-     <div class=color-options>
-      <div *ngFor="let productColor of productColors" >
-          <div (click)="clickedColor(productColor)"><img src="http://images.nicethings.es/ecommerce/opciones/{{product?.mpn}}_{{productColor}}.jpg" height=50px/></div> 
-      </div>
-      <div *ngFor="let productSize of productSizes">
-       <div (click)="clickedSize(productSize)">{{productSize}}</div>
+  <div class="row product-options">
+
+    <div class="price"><p>{{ product?.price }}€ - NOW {{ product?.sale_price }}€</p></div>
+
+    <div class="color-options"> 
+      <div class="color" *ngFor="let productColor of productColors; let i = index">
+        <div id="color-{{i}}" (click)="clickedColor(productColor, i)"><img src="http://images.nicethings.es/ecommerce/opciones/{{product?.mpn}}_{{productColor}}.jpg" height=25px/></div> 
       </div>
     </div>
-    <p>{{ this.session.user }}</p>
-    <a class="btn btn-default" [routerLink]="['/myaccount', this.user?._id, 'favourites', product._id]">Add to Favourites</a>
-</div>  
+
+    <div class="size-options" *ngFor="let productSize of productSizes; let i = index">
+       <div id="size-{{i}}" (click)="clickedSize(productSize, i)">{{productSize}}</div>
+    </div>
+  
+    <div class="action-buttons">
+      <a class="btn btn-default">Add to Cart</a>
+      <a class="btn btn-default" (click)="addFavourite()" >Add to Favourites</a>
+    </div>
+    
+
+</div>

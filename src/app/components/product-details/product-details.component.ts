@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
 import { SessionService } from '../../services/session.service'
 import { ActivatedRoute } from '@angular/router';
+import { Http } from '@angular/http';
+
 
 
 @Component({
@@ -16,13 +18,15 @@ export class ProductDetailsComponent implements OnInit {
   productSizes;
   productSelectedColor;
   productSelectedSize;
-  user = JSON.parse(localStorage.getItem('user'))
+  user = JSON.parse(localStorage.getItem('user'));
+  BASE_URL: string = 'http://localhost:3000';
 
 
    constructor(
     private route: ActivatedRoute,
     private productService: ProductsService,
-    private session: SessionService) { }
+    private session: SessionService,
+    private http: Http) { }
 
   ngOnInit() {
 
@@ -63,8 +67,9 @@ export class ProductDetailsComponent implements OnInit {
   });
   }
 
-    clickedColor(code) {
+    clickedColor(code, i) {
       this.productSelectedColor = code;
+      document.getElementById(i).classList.add("selected")
     }
 
     clickedSize(size) {
@@ -72,4 +77,13 @@ export class ProductDetailsComponent implements OnInit {
       console.log(this.productSelectedSize)
     }
 
+    addFavourite(){
+      this.route.params.subscribe(params => {
+        let productId = params["id"];
+        let userId = this.user._id;
+        console.log(`${this.BASE_URL}/products/addFavourite`)
+        return this.http.put(`${this.BASE_URL}/products/addFavourite`, {productId, userId} )
+        .subscribe((res)=> console.log(res))
+      })
+    }
 }

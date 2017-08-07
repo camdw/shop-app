@@ -1,0 +1,36 @@
+.product-options {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.price .color-options .size-options .action-buttons {
+    flex: 1 1 auto;
+    align-self: auto;
+}
+
+.color-options {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.color {
+    flex: 0 1 auto;
+    align-self: auto;
+}
+
+.color img {
+    border-radius: 25px;
+}
+
+.selected {
+    border: 2px black solid;
+}
