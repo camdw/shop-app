@@ -79,11 +79,19 @@ export class ProductDetailsComponent implements OnInit {
 
     addFavourite(){
       this.route.params.subscribe(params => {
-        console.log(params)
-        // let productId = params["id"];
-        // let userId = this.user._id;
-        // return this.http.put(`${this.BASE_URL}/products/addFavourite`, {productId, userId} )
-        // .subscribe((res)=> (res))
+        let productId = params["id"];
+        let userId = this.user._id;
+        return this.http.put(`${this.BASE_URL}/products/addFavourite`, {productId, userId} )
+        .subscribe((res)=> (res))
       })
     }
+
+    // removeFavourite(id){
+    //   this.route.params.subscribe(params => {
+    //     let productId = params["id"];
+    //     let userId = this.user._id;
+    //     return this.http.put(`${this.BASE_URL}/products/removeFavourite`, {productId, userId} )
+    //     .subscribe((res)=> (res))
+    //   })
+    // }
 }

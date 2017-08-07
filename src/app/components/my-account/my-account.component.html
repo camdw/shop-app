@@ -1,5 +1,32 @@
 <p>
-  {{ this.user.firstname }}
+  {{ this.localUser.firstname }}
   </p>
 
 <p>HOLA</p>
+
+<p>
+
+  </p>
+
+ <div class='products container'>
+  <div class='row'>
+    
+    <div class="product col-xs-6 col-md-4" *ngFor="let favourite of favourites">
+        <img class="favourite-image" src="http://images.nicethings.es/ecommerce/024/{{favourite?.mpn}}_{{favourite?.color[0].code}}_M.jpg" height=300px/>  
+      <h3 class="favourite-title">{{ favourite?.title }}</h3>
+      <p class="favourite-price">{{ favourite.price }}€ - NOW {{ favourite.sale_price }}€</p>
+    
+       <div class="color-options">
+        <div class="color" *ngFor="let color of favourite.color" >
+          <div (click)="clickedColor(color)">
+            <img src="http://images.nicethings.es/ecommerce/opciones/{{favourite?.mpn}}_{{color.code}}.jpg" height=20px/>
+          </div>  
+        </div> 
+      </div> 
+      <div class="details-favourite">
+         <a class="btn btn-default" [routerLink]="['/products', favourite._id]">View Details</a> 
+          <a class="btn btn-default" (click)="removeFavourite(favourite._id)">Remove Favourites</a>   
+      </div>
+    </div> 
+  </div>
+</div> 
