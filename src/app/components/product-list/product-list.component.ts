@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Http } from '@angular/http';
 import { ProductsService } from '../../services/products.service';
-import {MyAccountService} from '../../services/my-account.service'
+import { MyAccountService} from '../../services/my-account.service'
+import { SessionService } from '../../services/session.service'
 
 @Component({
   selector: 'app-product-list',
@@ -21,6 +22,7 @@ export class ProductListComponent implements OnInit {
 
   constructor(private productService: ProductsService,
               private account: MyAccountService,
+              private session: SessionService,
               private route: ActivatedRoute,
               private http: Http ) { }
 
@@ -34,9 +36,15 @@ export class ProductListComponent implements OnInit {
 
 
   clickedColor(code) {
-      this.productSelectedColor = code;
-      console.log(this.productSelectedColor)
-    }
+    this.productSelectedColor = code;
+    console.log(this.productSelectedColor)
+  }
 
-
+  addFavourite(productId){
+    this.route.params.subscribe(params => {
+      let userId = this.user._id;
+      return this.http.put(`${this.BASE_URL}/products/addFavourite`, {productId, userId} )
+        .subscribe((res)=> (res))
+    })
+  }
 }

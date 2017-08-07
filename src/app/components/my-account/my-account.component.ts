@@ -28,10 +28,10 @@ export class MyAccountComponent implements OnInit {
   });
 }
 
-  getUserDetails(id) {
-    this.account.getUser(id)
-      .subscribe((theUser) => {
-        this.user = theUser;
+    getUserDetails(id) {
+      this.account.getUser(id)
+        .subscribe((theUser) => {
+         this.user = theUser;
         console.log(this.user)
       });
   }
