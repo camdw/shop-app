@@ -18,6 +18,7 @@ export class ProductDetailsComponent implements OnInit {
   productSizes;
   productSelectedColor;
   productSelectedSize;
+  cart = [];
   user = JSON.parse(localStorage.getItem('user'));
   BASE_URL: string = 'http://localhost:3000';
 
@@ -68,8 +69,10 @@ export class ProductDetailsComponent implements OnInit {
   }
 
     clickedColor(code, i) {
+      let colorId = 'color-' + i
       this.productSelectedColor = code;
-      document.getElementById(i).classList.add("selected")
+      document.getElementById('color').style.border = "thick solid red"
+      document.getElementById(colorId).style.border = "thick solid #0000FF"
     }
 
     clickedSize(size) {
@@ -77,7 +80,7 @@ export class ProductDetailsComponent implements OnInit {
       console.log(this.productSelectedSize)
     }
 
-    addFavourite(){
+    addFavourite() {
       this.route.params.subscribe(params => {
         let productId = params["id"];
         let userId = this.user._id;
@@ -86,12 +89,20 @@ export class ProductDetailsComponent implements OnInit {
       })
     }
 
-    // removeFavourite(id){
-    //   this.route.params.subscribe(params => {
-    //     let productId = params["id"];
-    //     let userId = this.user._id;
-    //     return this.http.put(`${this.BASE_URL}/products/removeFavourite`, {productId, userId} )
-    //     .subscribe((res)=> (res))
-    //   })
-    // }
+    addToCart() {
+      if (!this.productSelectedColor || !this.productSelectedSize) {
+        console.log("select a size and color")
+      }
+      else {
+      let cartItem = {
+        productId: this.product._id,
+        ordered_color: this.productSelectedColor,
+        ordered_size: this.productSelectedSize,
+        quantity: 1,
+        product_price: this.product.price,
+      }
+
+      console.log(cartItem)
+    }
+    }
 }
