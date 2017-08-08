@@ -30,18 +30,13 @@ export class MyAccountComponent implements OnInit {
 
    ngOnInit() {
 
-
-
     this.route.params.subscribe(params => {
-      this.account.getUser(this.localUser._id)
-        .subscribe((theUser) => {
-         this.user = theUser;
-         this.favourites = theUser.favourite_products;
+      this.account.getBehaviour(this.localUser._id)
+        .subscribe((theBehaviour) => {
+         this.favourites = theBehaviour.favourite_products;
          this.getFavouritesId();
-      
-  });
-
-  })
+      });
+    })
 
  }
 

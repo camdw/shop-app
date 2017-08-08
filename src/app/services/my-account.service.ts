@@ -19,8 +19,11 @@ getUser(id) {
   return this.http.get(`${this.BASE_URL}/my-account/${id}`)
       .map((res) => res.json());
   }
-  
-}
 
+getBehaviour(id) {
+  return this.http.get(`${this.BASE_URL}/my-account/${id}`)
+      .map((res) => res.json());
+  }
+}
 
 
