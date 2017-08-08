@@ -37,7 +37,6 @@ export class MyAccountComponent implements OnInit {
          this.getFavouritesId();
       });
     })
-
  }
 
     getFavouritesId() {
@@ -45,7 +44,6 @@ export class MyAccountComponent implements OnInit {
         let temp = this.favourites[i]._id;
         this.favouritesId.push(temp);
       }
-              console.log(this.favouritesId)
     }
 
 

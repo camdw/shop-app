@@ -95,7 +95,6 @@ export class ProductDetailsComponent implements OnInit {
           productId: this.product._id,
           ordered_color: this.productSelectedColor,
           ordered_size: this.productSelectedSize,
-          product_price: this.product.price,
         }
 
         let userId = this.user._id

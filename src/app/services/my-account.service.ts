@@ -24,6 +24,10 @@ getBehaviour(id) {
   return this.http.get(`${this.BASE_URL}/my-account/${id}`)
       .map((res) => res.json());
   }
+
+getCart(id) {
+  return this.http.get(`${this.BASE_URL}/my-cart/${id}`)
+      .map((res) => res.json());
+  }
+
 }
-
-

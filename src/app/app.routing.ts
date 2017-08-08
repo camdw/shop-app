@@ -6,14 +6,16 @@ import { TopMenuComponent } from './components/top-menu/top-menu.component';
 import { CategoryComponent } from './components/category/category.component';
 import { LoginComponent } from './components/login/login.component';
 import { MyAccountComponent } from './components/my-account/my-account.component'
+import { MyCartComponent } from './components/my-cart/my-cart.component'
 
 import { SessionService } from './services/session.service'
 
 export const routes: Routes = [
   { path: '', component: ProductListComponent },
   { path: 'products/:id', component: ProductDetailsComponent },
-  { path: 'login', component: LoginComponent},
-  { path: 'myaccount', component: MyAccountComponent, canActivate: [SessionService]},
-  { path: ':category', component: CategoryComponent},
+  { path: 'login', component: LoginComponent },
+  { path: 'myaccount', component: MyAccountComponent, canActivate: [SessionService] },
+  { path: 'mycart', component: MyCartComponent },
+  { path: ':category', component: CategoryComponent },
   
 ];
