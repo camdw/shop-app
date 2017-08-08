@@ -28,19 +28,24 @@
       </table>
       <table class="table">
         <thead>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th>Total Price</th>
+          <th class="col-md-1"></th>
+          <th class="col-md-4"></th>
+          <th class="col-md-1"></th>
+          <th class="col-md-1"></th>
+          <th class="col-md-2">Total Price</th>
+          <th class="col-md-4"></th>
         </thead>
         <tbody>
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>{{ cartTotal }}</td>
+            <td class="col-md-1"></td>
+            <td class="col-md-4"></td>
+            <td class="col-md-1"></td>
+            <td class="col-md-1"></td>
+            <td class="col-md-2">{{ cartTotal }}</td>
+             <td class="col-md-4 cartitem cartItem-delete">
+                  <button type="button" class="btn btn-default" (click)="processOrder()">Process Order
+                  </button>
+            </td>
           </tr>
         </tbody>
       </table>

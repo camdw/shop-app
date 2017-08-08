@@ -17,6 +17,7 @@ export class MyCartComponent implements OnInit {
   cartItems = [];
   cartItemsId = [];
   cartTotal = 0;
+  orderItems = []
   BASE_URL: string = 'http://localhost:3000';
   
   error = null;
@@ -36,6 +37,7 @@ export class MyCartComponent implements OnInit {
         .subscribe((theBehaviour) => {
         this.cartItems = theBehaviour.current_cart
         this.calculateTotal()
+        console.log(this.cartItems)
       });
     })
   }
@@ -66,4 +68,34 @@ export class MyCartComponent implements OnInit {
         })
       })
     }
+
+  orderItemsObject() {
+    for (var i =0; i < this.cartItems.length; i++) {
+      let item = {
+        productId: this.cartItems[i].productId._id,
+        ordered_color: this.cartItems[i].ordered_color,
+        ordered_size: this.cartItems[i].ordered_size
+      }
+
+      this.orderItems.push(item)
+    }
+
+      console.log(this.orderItems)
+  }
+
+
+  processOrder() {
+
+    this.orderItemsObject()
+
+    let userId = this.localUser._id;
+    let orderItems = this.orderItems;
+    let total = this.cartTotal;
+
+    this.route.params.subscribe(params => {
+      return this.http.post(`${this.BASE_URL}/my-cart/order`, {userId, orderItems, total} )
+        .subscribe((res)=> (res))
+    });
+  }
+
 }
