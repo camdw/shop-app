@@ -103,6 +103,11 @@ export class SessionService implements CanActivate {
       }).catch(this.handleError);
   }
 
+  behaviour(id) {
+    return this.http.post(`${this.BASE_URL}/behaviour`, id)
+      .map((res) => res.json())
+    }
+
 }
 
 
