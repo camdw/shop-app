@@ -42,7 +42,6 @@ export class ProductListComponent implements OnInit {
   addFavourite(productId){
     this.route.params.subscribe(params => {
       let userId = this.user._id;
-      console.log(productId)
       return this.http.put(`${this.BASE_URL}/products/addFavourite`, {productId, userId} )
         .subscribe((res)=> (res))
     })

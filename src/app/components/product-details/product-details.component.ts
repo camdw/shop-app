@@ -69,15 +69,11 @@ export class ProductDetailsComponent implements OnInit {
   }
 
     clickedColor(code, i) {
-      let colorId = 'color-' + i
       this.productSelectedColor = code;
-      document.getElementById('color').style.border = "thick solid red"
-      document.getElementById(colorId).style.border = "thick solid #0000FF"
     }
 
     clickedSize(size) {
       this.productSelectedSize = size;
-      console.log(this.productSelectedSize)
     }
 
     addFavourite() {
@@ -90,19 +86,27 @@ export class ProductDetailsComponent implements OnInit {
     }
 
     addToCart() {
+
       if (!this.productSelectedColor || !this.productSelectedSize) {
         console.log("select a size and color")
       }
       else {
-      let cartItem = {
-        productId: this.product._id,
-        ordered_color: this.productSelectedColor,
-        ordered_size: this.productSelectedSize,
-        quantity: 1,
-        product_price: this.product.price,
-      }
+        let cartItem = {
+          productId: this.product._id,
+          ordered_color: this.productSelectedColor,
+          ordered_size: this.productSelectedSize,
+          product_price: this.product.price,
+        }
 
-      console.log(cartItem)
+        let userId = this.user._id
+      
+        this.route.params.subscribe(params => {
+          return this.http.put(`${this.BASE_URL}/products/addToCart`, {cartItem, userId} )
+            .subscribe((res)=> (res))
+        })
+      }
     }
-    }
+
+
 }
+
