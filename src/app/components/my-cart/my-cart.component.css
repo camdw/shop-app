@@ -1,0 +1,15 @@
+.item {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-content: stretch;
+    align-items: center;
+    border: 1px solid black;
+    }
+
+.cartItem {
+    order: 0;
+    flex: 0 1 auto;
+    align-self: auto;
+    }

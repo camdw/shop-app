@@ -1,7 +1,49 @@
-<p>
-  my-cart works!
-</p>
 
-<p>
-  {{ cart[0]?.productId.title }}
-</p>
+ <div class='items container'>
+  <div class='row'>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <th></th>
+          <th>Item</th>
+          <th>Color</th>
+          <th>Size</th>
+          <th>Price</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cartItem of cartItems">
+            <td class="col-md-1"><img class="cartitem cartItem-image" src="http://images.nicethings.es/ecommerce/024/{{cartItem?.productId.mpn}}_{{cartItem?.ordered_color}}_M.jpg" height=50px/></td>
+            <td class="col-md-4 cartitem cartItem-title">{{ cartItem?.productId.title }}</td>
+            <td class="col-md-1 cartitem color-image"><img class="cartitem cartitem-color-image" src="http://images.nicethings.es/ecommerce/opciones/{{cartItem?.productId.mpn}}_{{cartItem?.ordered_color}}.jpg" height=20px/></td>
+            <td class="col-md-1 cartitem cartItem-size">{{ cartItem?.ordered_size }}</td>
+            <td class="col-md-2 cartitem cartItem-price">{{ cartItem?.productId.price }}€</td>
+
+            <td class="col-md-4 cartitem cartItem-delete">
+                  <button type="button" class="btn btn-default" (click)="deleteItem(cartItem.productId._id)">
+                  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                  </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table">
+        <thead>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th>Total Price</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{ cartTotal }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div> 
+</div>
