@@ -14,12 +14,12 @@
 
     <div class="color-options"> 
       <div class="color" *ngFor="let productColor of productColors; let i = index">
-        <div id="color-{{i}}" (click)="clickedColor(productColor, i)"><img src="http://images.nicethings.es/ecommerce/opciones/{{product?.mpn}}_{{productColor}}.jpg" height=25px/></div> 
+        <div [ngClass]="{selected: productColor === productSelectedColor}" (click)="clickedColor(productColor, i)"><img src="http://images.nicethings.es/ecommerce/opciones/{{product?.mpn}}_{{productColor}}.jpg" height=25px/></div> 
       </div>
     </div>
 
     <div class="size-options" *ngFor="let productSize of productSizes; let i = index">
-       <div id="size-{{i}}" [ngClass]="{selected: productSize === productSelectedSize}" (click)="clickedSize(productSize, i)">{{productSize}}</div>
+       <div [ngClass]="{selected: productSize === productSelectedSize}" (click)="clickedSize(productSize, i)">{{productSize}}</div>
     </div>
   
     <div class="action-buttons">

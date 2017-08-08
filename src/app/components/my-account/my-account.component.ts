@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { SessionService } from '../../services/session.service';
 import { MyAccountService } from '../../services/my-account.service';
 import { ProductsService } from '../../services/products.service';
@@ -15,6 +15,7 @@ export class MyAccountComponent implements OnInit {
   localUser = JSON.parse(localStorage.getItem('user'));
   user = {};
   favourites = [];
+  favouritesId = [];
   BASE_URL: string = 'http://localhost:3000';
   
   error = null;
@@ -23,8 +24,9 @@ export class MyAccountComponent implements OnInit {
     private account: MyAccountService,
     private session: SessionService,
     private route: ActivatedRoute,
-    private http: Http
-  ) { }
+    private http: Http,
+    private ngzone: NgZone
+    ) { }
 
    ngOnInit() {
 
@@ -35,6 +37,7 @@ export class MyAccountComponent implements OnInit {
         .subscribe((theUser) => {
          this.user = theUser;
          this.favourites = theUser.favourite_products;
+         this.getFavouritesId();
       
   });
 
@@ -42,14 +45,25 @@ export class MyAccountComponent implements OnInit {
 
  }
 
+    getFavouritesId() {
+      for (let i = 0; i < this.favourites.length; i++) {
+        let temp = this.favourites[i]._id;
+        this.favouritesId.push(temp);
+      }
+              console.log(this.favouritesId)
+    }
+
+
     removeFavourite(id){
       this.route.params.subscribe(params => {
         let productId = id;
         let userId = this.localUser._id;
-        let index = this.favourites.indexOf(productId);
+        let index = this.favouritesId.indexOf(productId);
         this.favourites.splice(index, 1);
+        this.ngzone.run(() => {
         return this.http.put(`${this.BASE_URL}/products/removeFavourite`, {productId, userId} )
         .subscribe((res)=> (res))
+        })
       })
     }
 

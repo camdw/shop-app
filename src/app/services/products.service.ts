@@ -25,3 +25,4 @@ getCategory(category) {
       .map((res) => res.json());
   }
 }
+
