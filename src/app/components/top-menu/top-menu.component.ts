@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../services/products.service'
 import { SessionService } from '../../services/session.service';
+import { MyAccountService } from '../../services/my-account.service';
 
 @Component({
   selector: 'app-top-menu',
@@ -12,9 +13,11 @@ export class TopMenuComponent implements OnInit {
   productCategories;
 
   constructor(private productService: ProductsService,
-              private sessionService: SessionService) { }
+              private sessionService: SessionService,
+              private account: MyAccountService) { }
 
   user;
+  cartItems = 0;
 
   ngOnInit() {
  
@@ -23,7 +26,14 @@ export class TopMenuComponent implements OnInit {
     this.productService.getList()
       .subscribe((products) => {
         this.getProductCategories(products)
+      });
+
+    this.account.getCart(this.user._id)
+      .subscribe((theBehaviour) => {
+        this.cartItems = theBehaviour.current_cart.length
     });
+
+
   }
 
     getProductCategories(products) {
