@@ -15,7 +15,7 @@ export class ProductListComponent implements OnInit {
   products;
   productSelectedColor;
   productCategories;
-  user = JSON.parse(localStorage.getItem('user'))
+  user = JSON.parse(localStorage.getItem('user'));
 
   BASE_URL: string = 'http://localhost:3000';
 
@@ -28,10 +28,13 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit() {
 
+    console.log(this.session.user)
+
     this.productService.getList()
       .subscribe((products) => {
         this.products = products;
     });
+
    }
 
 

@@ -12,18 +12,16 @@ export class TopMenuComponent implements OnInit {
 
   productCategories;
 
-  constructor(private productService: ProductsService,
-              private sessionService: SessionService,
+  constructor(private product: ProductsService,
+              private session: SessionService,
               private account: MyAccountService) { }
 
-  user;
+  user = JSON.parse(localStorage.getItem('user'));
   cartItems = 0;
 
   ngOnInit() {
  
-    this.user = JSON.parse(localStorage.getItem('user'));
-
-    this.productService.getList()
+    this.product.getList()
       .subscribe((products) => {
         this.getProductCategories(products)
       });
@@ -32,7 +30,6 @@ export class TopMenuComponent implements OnInit {
       .subscribe((theBehaviour) => {
         this.cartItems = theBehaviour.current_cart.length
     });
-
 
   }
 
@@ -47,7 +44,7 @@ export class TopMenuComponent implements OnInit {
     };
 
     logout() {
-      this.sessionService.logout()
+      this.session.logout()
       this.user = null;
    }
 

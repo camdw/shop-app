@@ -49,6 +49,8 @@ export class MyCartComponent implements OnInit {
     }
 
   calculateTotal() {
+    this.cartTotal = 0;
+
     for (var i = 0; i < this.cartItems.length; i++) {
       this.cartTotal += this.cartItems[i].productId.price
     }
@@ -61,6 +63,7 @@ export class MyCartComponent implements OnInit {
         let userId = this.localUser._id;
         let index = this.cartItemsId.indexOf(productId);
         this.cartItems.splice(index, 1);
+        this.calculateTotal();
         this.ngzone.run(() => {
         return this.http.put(`${this.BASE_URL}/my-cart/deleteItem`, {productId, userId} )
         .subscribe((res)=> (res))
@@ -105,7 +108,11 @@ export class MyCartComponent implements OnInit {
 
     this.route.params.subscribe(params => {
       return this.http.post(`${this.BASE_URL}/my-cart/order`, {userId, orderItems, total} )
-        .subscribe((res)=> (res))
+        .subscribe((res) => {
+
+          console.log("res", res);
+          
+        })
     });
 
 
