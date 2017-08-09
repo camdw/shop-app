@@ -12,6 +12,7 @@ export class SessionService implements CanActivate {
   public user = {};
   public token = '';
   public isAuthenticated = false;
+  cartItems = 0;
 
   constructor(
     private http: Http,

@@ -3,7 +3,7 @@ import { ProductsService } from '../../services/products.service';
 import { SessionService } from '../../services/session.service'
 import { ActivatedRoute } from '@angular/router';
 import { Http } from '@angular/http';
-
+import { MyAccountService } from '../../services/my-account.service';
 
 
 @Component({
@@ -18,7 +18,7 @@ export class ProductDetailsComponent implements OnInit {
   productSizes;
   productSelectedColor;
   productSelectedSize;
-  cart = [];
+  cartItems = [];
   user = JSON.parse(localStorage.getItem('user'));
   BASE_URL: string = 'http://localhost:3000';
 
@@ -26,6 +26,7 @@ export class ProductDetailsComponent implements OnInit {
    constructor(
     private route: ActivatedRoute,
     private productService: ProductsService,
+    private myAccount: MyAccountService,
     private session: SessionService,
     private http: Http) { }
 
@@ -101,7 +102,9 @@ export class ProductDetailsComponent implements OnInit {
       
         this.route.params.subscribe(params => {
           return this.http.put(`${this.BASE_URL}/products/addToCart`, {cartItem, userId} )
-            .subscribe((res)=> (res))
+            .subscribe((res) => {
+              this.myAccount.sendCartChanged();
+            });
         })
       }
     }

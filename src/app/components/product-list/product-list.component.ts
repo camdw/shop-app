@@ -28,8 +28,6 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit() {
 
-    console.log(this.session.user)
-
     this.productService.getList()
       .subscribe((products) => {
         this.products = products;

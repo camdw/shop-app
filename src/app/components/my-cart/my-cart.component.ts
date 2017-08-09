@@ -66,10 +66,12 @@ export class MyCartComponent implements OnInit {
         this.calculateTotal();
         this.ngzone.run(() => {
         return this.http.put(`${this.BASE_URL}/my-cart/deleteItem`, {productId, userId} )
-        .subscribe((res)=> (res))
-        })
+        .subscribe((res)=> {
+              this.account.sendCartChanged();
+            });
       })
-    }
+    })
+  }
 
 
 
