@@ -37,7 +37,6 @@ export class MyCartComponent implements OnInit {
         .subscribe((theBehaviour) => {
         this.cartItems = theBehaviour.current_cart
         this.calculateTotal()
-        console.log(this.cartItems)
       });
     })
   }
@@ -69,6 +68,8 @@ export class MyCartComponent implements OnInit {
       })
     }
 
+
+
   orderItemsObject() {
     for (var i =0; i < this.cartItems.length; i++) {
       let item = {
@@ -84,6 +85,14 @@ export class MyCartComponent implements OnInit {
   }
 
 
+  emptyCart(){
+      this.route.params.subscribe(params => {
+        this.cartItems = [];
+        this.cartTotal = 0;
+        this.ngzone.run(() => {})
+      })
+    }
+
   processOrder() {
 
     this.orderItemsObject()
@@ -92,10 +101,14 @@ export class MyCartComponent implements OnInit {
     let orderItems = this.orderItems;
     let total = this.cartTotal;
 
+    this.emptyCart()
+
     this.route.params.subscribe(params => {
       return this.http.post(`${this.BASE_URL}/my-cart/order`, {userId, orderItems, total} )
         .subscribe((res)=> (res))
     });
+
+
   }
 
 }
