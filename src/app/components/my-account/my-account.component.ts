@@ -16,6 +16,7 @@ export class MyAccountComponent implements OnInit {
   user = {};
   favourites = [];
   favouritesId = [];
+  orders = []
   visible;
   BASE_URL: string = 'http://localhost:3000';
   
@@ -37,7 +38,9 @@ export class MyAccountComponent implements OnInit {
       this.account.getBehaviour(this.localUser._id)
         .subscribe((theBehaviour) => {
          this.favourites = theBehaviour.favourite_products;
+         this.orders = theBehaviour.past_orders;
          this.getFavouritesId();
+        console.log(theBehaviour.past_orders)
       });
     })
  }
