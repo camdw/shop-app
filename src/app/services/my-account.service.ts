@@ -34,6 +34,11 @@ getCart(id) {
       .map((res) => res.json());
   }
 
+getUserOrders(id){
+    return this.http.get(`${this.BASE_URL}/my-account/orders/${id}`)
+      .map((res) => res.json());
+      }
+
 sendCartChanged() {
   this.subject.next({"changed": true});
 }
@@ -41,5 +46,7 @@ sendCartChanged() {
 getCartChanged(): Observable<any> {
   return this.subject.asObservable();
 }
+
+
 
 }

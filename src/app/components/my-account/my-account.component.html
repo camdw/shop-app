@@ -9,7 +9,7 @@
     <a class="nav-link active" (click)="viewFavourites()">Active</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" (click)="viewOrders()">Link</a>
+    <a class="nav-link" (click)="viewOrders(this.localUser._id)">Link</a>
   </li>
 </ul>
 
@@ -36,8 +36,65 @@
     </div>
     </div>
     
-    <div *ngIf="visible === 'orders'">
-      <p>HOLA!</p>
+  <div *ngIf="visible === 'orders'">
+   <div class='items container'>
+    <div class='row'>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <th>Order #</th>
+            <th>Date</th>
+            <th>Items</th>
+            <th>Size</th>
+            <th>Price</th>
+            <th>Total Amount</th>
+            <th></th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let order of orders">
+              <td class="col-md-2 order order-title">{{ order?._id }}</td>
+              <td class="col-md-1 order order-image">{{ order?.created_at | date }}</td>
+            <div>
+              <td class="col-md-4 order order-title">{{ order?._id }}</td>
+              <td class="col-md-3 order order-image">{{ order?.created_at | date }}</td>
+            </div>  
+              <td class="col-md-3 order order-size">{{ order?.total }} €</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
+
+<div *ngIf = "orderDetails != null">       
+  <div class='row'>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <th></th>
+          <th>Item</th>
+          <th>Color</th>
+          <th>Size</th>
+          <th>Price</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cartItem of cartItems">
+            <td class="col-md-1"><img class="cartitem cartItem-image" src="http://images.nicethings.es/ecommerce/024/{{cartItem?.productId.mpn}}_{{cartItem?.ordered_color}}_M.jpg" height=50px/></td>
+            <td class="col-md-4 cartitem cartItem-title">{{ cartItem?.productId.title }}</td>
+            <td class="col-md-1 cartitem color-image"><img class="cartitem cartitem-color-image" src="http://images.nicethings.es/ecommerce/opciones/{{cartItem?.productId.mpn}}_{{cartItem?.ordered_color}}.jpg" height=20px/></td>
+            <td class="col-md-1 cartitem cartItem-size">{{ cartItem?.ordered_size }}</td>
+            <td class="col-md-2 cartitem cartItem-price">{{ cartItem?.productId.price }}€</td>
+
+            <td class="col-md-4 cartitem cartItem-delete">
+                  <button type="button" class="btn btn-default" (click)="deleteItem(cartItem.productId._id)">
+                  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                  </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</div> 

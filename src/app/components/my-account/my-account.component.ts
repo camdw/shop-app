@@ -18,6 +18,8 @@ export class MyAccountComponent implements OnInit {
   favouritesId = [];
   orders = []
   visible;
+  visibleOrder;
+  orderDetails;
   BASE_URL: string = 'http://localhost:3000';
   
   error = null;
@@ -38,9 +40,7 @@ export class MyAccountComponent implements OnInit {
       this.account.getBehaviour(this.localUser._id)
         .subscribe((theBehaviour) => {
          this.favourites = theBehaviour.favourite_products;
-         this.orders = theBehaviour.past_orders;
          this.getFavouritesId();
-        console.log(theBehaviour.past_orders)
       });
     })
  }
@@ -51,7 +51,6 @@ export class MyAccountComponent implements OnInit {
         this.favouritesId.push(temp);
       }
     }
-
 
     removeFavourite(id){
       this.route.params.subscribe(params => {
@@ -66,8 +65,21 @@ export class MyAccountComponent implements OnInit {
       })
     }
 
-    viewOrders() {
-      this.visible = 'orders';
+    getOrders(id) {
+      this.account.getUserOrders(id)
+        .subscribe((orders) => {
+          this.orders = orders;
+          console.log(orders)
+      });
+    }
+
+    viewOrders(id) {
+      this.route.params.subscribe(params => {
+        this.account.getUserOrders(id)
+        .subscribe((orders) => {
+          console.log(orders)
+        })
+      })
     }
 
     viewFavourites() {
