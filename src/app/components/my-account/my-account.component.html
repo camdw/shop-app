@@ -6,23 +6,18 @@
 
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a class="nav-link active" href="#">Active</a>
+    <a class="nav-link active" (click)="viewFavourites()">Active</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled" href="#">Disabled</a>
+    <a class="nav-link" (click)="viewOrders()">Link</a>
   </li>
 </ul>
 
  <div class='products container'>
   <div class='row'>
     
-    <div class="product col-xs-6 col-md-4" *ngFor="let favourite of favourites">
+    <div *ngIf="visible === 'favourites'">
+      <div class="product col-xs-6 col-md-4" *ngFor="let favourite of favourites">
         <img class="favourite-image" src="http://images.nicethings.es/ecommerce/024/{{favourite?.mpn}}_{{favourite?.color[0].code}}_M.jpg" height=300px/>  
       <h3 class="favourite-title">{{ favourite?.title }}</h3>
       <p class="favourite-price">{{ favourite.price }}€ - NOW {{ favourite.sale_price }}€</p>
@@ -38,6 +33,11 @@
          <a class="btn btn-default" [routerLink]="['/products', favourite._id]">View Details</a> 
           <a class="btn btn-default" (click)="removeFavourite(favourite._id)">Remove Favourites</a>   
       </div>
-    </div> 
+    </div>
+    </div>
+    
+    <div *ngIf="visible === 'orders'">
+      <p>HOLA!</p>
+    </div>
   </div>
 </div>

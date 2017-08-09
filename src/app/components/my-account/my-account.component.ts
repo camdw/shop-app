@@ -16,6 +16,7 @@ export class MyAccountComponent implements OnInit {
   user = {};
   favourites = [];
   favouritesId = [];
+  visible;
   BASE_URL: string = 'http://localhost:3000';
   
   error = null;
@@ -29,6 +30,8 @@ export class MyAccountComponent implements OnInit {
     ) { }
 
    ngOnInit() {
+
+    this.visible = 'favourites';
 
     this.route.params.subscribe(params => {
       this.account.getBehaviour(this.localUser._id)
@@ -58,6 +61,14 @@ export class MyAccountComponent implements OnInit {
         .subscribe((res)=> (res))
         })
       })
+    }
+
+    viewOrders() {
+      this.visible = 'orders';
+    }
+
+    viewFavourites() {
+      this.visible = 'favourites';
     }
 
 }
