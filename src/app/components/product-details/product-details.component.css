@@ -1,3 +1,22 @@
+.image-descrpription {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+}
+
+.product-images {
+    flex: 1 0 auto;
+    align-self: auto;
+}
+
+.product-description {
+    flex: 1 1 auto;
+    align-self: auto;
+}
+
 .product-options {
     display: flex;
     flex-direction: row;

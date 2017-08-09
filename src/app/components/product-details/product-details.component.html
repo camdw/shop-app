@@ -1,12 +1,17 @@
 <div class="product container">
   <div class="row product-title"><h1>{{ product?.title }}</h1></div>
 
+<div class="image-descrpription">
   <div class='row product-images'>
     <img src="http://images.nicethings.es/ecommerce/024/{{product?.mpn}}_{{productSelectedColor}}_M.jpg" height=300px/>
     <img src="http://images.nicethings.es/ecommerce/024/{{product?.mpn}}_{{productSelectedColor}}_2_M.jpg" height=300px/>
     <img src="http://images.nicethings.es/ecommerce/024/{{product?.mpn}}_{{productSelectedColor}}_3_M.jpg" height=300px/>
     <img src="http://images.nicethings.es/ecommerce/024/{{product?.mpn}}_{{productSelectedColor}}_4_M.jpg" height=300px/>
   </div>
+
+  <div class='row product-description'>{{ product?.description }}</div>
+  
+</div>
 
   <div class="row product-options">
 
