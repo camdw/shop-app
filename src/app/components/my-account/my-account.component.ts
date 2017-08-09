@@ -18,8 +18,6 @@ export class MyAccountComponent implements OnInit {
   favouritesId = [];
   orders = []
   visible;
-  visibleOrder;
-  orderDetails;
   BASE_URL: string = 'http://localhost:3000';
   
   error = null;
@@ -77,7 +75,9 @@ export class MyAccountComponent implements OnInit {
       this.route.params.subscribe(params => {
         this.account.getUserOrders(id)
         .subscribe((orders) => {
-          console.log(orders)
+          this.orders = orders;
+          this.visible = 'orders';
+          console.log(this.orders)
         })
       })
     }

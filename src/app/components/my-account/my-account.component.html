@@ -6,10 +6,10 @@
 
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a class="nav-link active" (click)="viewFavourites()">Active</a>
+    <a class="nav-link active" (click)="viewFavourites()">My Favourites</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" (click)="viewOrders(this.localUser._id)">Link</a>
+    <a class="nav-link" (click)="viewOrders(this.localUser._id)">My Orders</a>
   </li>
 </ul>
 
@@ -39,26 +39,28 @@
   <div *ngIf="visible === 'orders'">
    <div class='items container'>
     <div class='row'>
+      <p>{{ orders[0].order_items[0].productId.category }}</p>
       <div class="table-responsive">
         <table class="table">
           <thead>
-            <th>Order #</th>
-            <th>Date</th>
-            <th>Items</th>
-            <th>Size</th>
-            <th>Price</th>
-            <th>Total Amount</th>
+            <th id="order" class="col-md-2">Order #</th>
+            <th id="date" class="col-md-1">Date</th>
+            <th id="items" class="col-md-4">Items</th>
+            <th id="size" class="col-md-3">Size</th>
+            <th id="price" class="col-md-3">Price</th>
+            <th id="total" class="col-md-3">Total Amount</th>
             <th></th>
           </thead>
           <tbody>
-            <tr *ngFor="let order of orders">
-              <td class="col-md-2 order order-title">{{ order?._id }}</td>
-              <td class="col-md-1 order order-image">{{ order?.created_at | date }}</td>
-            <div>
-              <td class="col-md-4 order order-title">{{ order?._id }}</td>
-              <td class="col-md-3 order order-image">{{ order?.created_at | date }}</td>
-            </div>  
-              <td class="col-md-3 order order-size">{{ order?.total }} €</td>
+            <tr *ngFor="let order of orders; let i = index">
+              <td header="order" class="col-md-2 order order-id">{{ order?._id }}</td>
+              <td header="date" class="col-md-1 order order-date">{{ order?.created_at | date }}</td>
+             <div *ngFor="let order_item of orders[i].order_items; let j = index">
+              <td header="items" class="col-md-4 order order-title">{{ orders[i].order_items[j].productId.title }}</td>
+              <td header="size" class="col-md-3 order order-size">{{ orders[i].order_items[j].ordered_size }}</td>
+              <td header="price" class="col-md-3 order order-price">{{ orders[i].order_items[j].productId.price | number: '1.2-2' }} €</td>
+            </div>   
+              <td header="total" class="col-md-3 order order-total">{{ order?.total | number: '1.2-2'}} €</td>
             </tr>
           </tbody>
         </table>
@@ -67,34 +69,5 @@
   </div>
 </div>
 
-<div *ngIf = "orderDetails != null">       
-  <div class='row'>
-    <div class="table-responsive">
-      <table class="table">
-        <thead>
-          <th></th>
-          <th>Item</th>
-          <th>Color</th>
-          <th>Size</th>
-          <th>Price</th>
-        </thead>
-        <tbody>
-          <tr *ngFor="let cartItem of cartItems">
-            <td class="col-md-1"><img class="cartitem cartItem-image" src="http://images.nicethings.es/ecommerce/024/{{cartItem?.productId.mpn}}_{{cartItem?.ordered_color}}_M.jpg" height=50px/></td>
-            <td class="col-md-4 cartitem cartItem-title">{{ cartItem?.productId.title }}</td>
-            <td class="col-md-1 cartitem color-image"><img class="cartitem cartitem-color-image" src="http://images.nicethings.es/ecommerce/opciones/{{cartItem?.productId.mpn}}_{{cartItem?.ordered_color}}.jpg" height=20px/></td>
-            <td class="col-md-1 cartitem cartItem-size">{{ cartItem?.ordered_size }}</td>
-            <td class="col-md-2 cartitem cartItem-price">{{ cartItem?.productId.price }}€</td>
-
-            <td class="col-md-4 cartitem cartItem-delete">
-                  <button type="button" class="btn btn-default" (click)="deleteItem(cartItem.productId._id)">
-                  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                  </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      </div>
-    </div>
-  </div>
-</div> 
+</div>
+</div>
