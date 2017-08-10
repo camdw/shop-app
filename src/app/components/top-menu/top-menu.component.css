@@ -37,6 +37,10 @@
     color: black;
 }
 
+.category > a.selected {
+    font-weight: 700;
+}
+
 .categories .category a:hover {
     border-bottom: 1px solid black;
 }

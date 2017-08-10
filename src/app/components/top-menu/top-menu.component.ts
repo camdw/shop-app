@@ -94,4 +94,5 @@ export class TopMenuComponent implements OnInit {
     this.user = null;
   }
 
+
 }

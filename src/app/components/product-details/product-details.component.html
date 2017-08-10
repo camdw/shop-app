@@ -33,17 +33,11 @@
         <img src="http://images.nicethings.es/ecommerce/024/{{product?.mpn}}_{{productSelectedColor}}_4_M.jpg" alt="" />
       </li>
     </ul>
-    <!-- <img src="http://images.nicethings.es/ecommerce/024/{{product?.mpn}}_{{productSelectedColor}}_M.jpg" height=300px/>
-    <img src="http://images.nicethings.es/ecommerce/024/{{product?.mpn}}_{{productSelectedColor}}_2_M.jpg" height=300px/>
-    <img src="http://images.nicethings.es/ecommerce/024/{{product?.mpn}}_{{productSelectedColor}}_3_M.jpg" height=300px/>
-    <img src="http://images.nicethings.es/ecommerce/024/{{product?.mpn}}_{{productSelectedColor}}_4_M.jpg" height=300px/> -->
   </section>
 
 
   <section class="flex-item">
     <p class='product-description'>{{ product?.description }}</p>
-    <p class="price">{{ product?.price | number: '1.2-2' }}€</p>
-
 
     <div class="product-options">
       <section class="color-options"> 
@@ -59,9 +53,11 @@
       </div>
     </div>
 
+    <p class="price">{{ product?.price | number: '1.2-2' }}€</p>
+
     <div class="action-buttons">
-      <a class="btn btn-default" (click)="addToCart()">Add to Cart</a>
-      <a class="btn btn-default" (click)="addFavourite()" >Add to Favourites</a>
+      <a id="cart" class="btn btn-default" (click)="addToCart()">Add to Cart</a>
+      <a id="favourites "class="btn btn-default" (click)="addFavourite()" >Add to Favourites</a>
     </div>
 
     <p id="added"></p>

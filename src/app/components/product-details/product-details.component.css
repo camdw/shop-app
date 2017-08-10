@@ -1,7 +1,6 @@
 html {
   box-sizing: border-box;
   height: 100%;
-  font-family: 'Open Sans', sans-serif;
 }
 
 *,
@@ -12,8 +11,8 @@ html {
   padding: 0;
 }
 
-h1 {
-    font-family: 'Raleway', sans-serif;
+.product {
+    font-family: 'Open Sans', sans-serif;
 }
 
 li {
@@ -28,15 +27,6 @@ li {
     margin-bottom: 1em;
 }
 
-.image-descrpription {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-    align-content: center;
-    align-items: center;
-}
-
 .product-images {
     flex: 0 1 auto;
     align-self: auto;
@@ -45,7 +35,8 @@ li {
 .product-description {
     flex: 1 1 auto;
     align-self: auto;
-    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    margin-top: 2em;
 }
 
 .product-options {
@@ -55,18 +46,17 @@ li {
     justify-content: space-around;
     align-content: center;
     align-items: center;
-    margin: 10px;
+    margin: 20px 10px 10px 10px;
 }
 
 .price .color-options .size-options .action-buttons {
     flex: 1 1 auto;
-    align-self: auto;
-    font-family: 'Open Sans', sans-serif;
+    align-self: center;
 }
+
 .size-options > div{
     cursor: pointer;
     border: 2px solid transparent;
-    font-family: 'Open Sans', sans-serif;
 }
 
 .color-options {
@@ -102,6 +92,11 @@ li {
 .size-options > div.selected {
     border: 2px solid black;
     padding: 2px;
+    font-weight: 700;
+}
+
+.size-options div:hover {
+    font-weight: 700;
 }
 
 .image-container {
@@ -149,13 +144,12 @@ li {
 }
 
 .product-image-slides img {
-  height: 40vmin;
+  height: 50vmin;
   object-fit: cover;
   object-position: top;
 }
 
 .product-image-slides li {
-  /* position: absolute; */
   z-index: 1;
 }
 
@@ -169,6 +163,14 @@ li {
     padding: .5em 1em;
 }
 
+#cart {
+    float: left;
+    margin-left: 50px;
+}
+
+#favourites {
+    float: left;
+}
 
 .flex-container {
     display: flex;
@@ -207,11 +209,12 @@ li {
 
 .price {
     text-align: center;
-    font-size: 30px;
+    font-size: 20px;
 }
 
 .action-buttons {
     text-align: right;
+    margin: auto;
 }
 
 .action-buttons a  {
