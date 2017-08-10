@@ -37,6 +37,9 @@ BASE_URL: string = 'http://localhost:3000';
       return this.http.put(`${this.BASE_URL}/products/addFavourite`, {productId, userId} )
         .subscribe((res)=> (res))
     })
+  
+  document.getElementById('added').innerHTML = 'Product added to Favourites';
+  
   }
 
 }

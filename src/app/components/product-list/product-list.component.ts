@@ -46,5 +46,8 @@ export class ProductListComponent implements OnInit {
       return this.http.put(`${this.BASE_URL}/products/addFavourite`, {productId, userId} )
         .subscribe((res)=> (res))
     })
+
+    document.getElementById('added').innerHTML = 'Product added to Favourites';
+
   }
 }

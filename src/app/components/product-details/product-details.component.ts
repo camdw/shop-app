@@ -43,7 +43,8 @@ export class ProductDetailsComponent implements OnInit {
     this.productService.getProduct(id)
       .subscribe((theProduct) => {
         this.product = theProduct;
-        this.productSelectedColor = theProduct.color[0].code;     
+        this.productSelectedColor = theProduct.color[0].code;
+        this.productSelectedSize = theProduct.size[0];      
       });
   }
 
@@ -85,6 +86,8 @@ export class ProductDetailsComponent implements OnInit {
         return this.http.put(`${this.BASE_URL}/products/addFavourite`, {productId, userId} )
         .subscribe((res)=> (res))
       })
+
+      document.getElementById('added').innerHTML = 'Product added to Favourites';
     }
 
     addToCart() {
@@ -98,7 +101,6 @@ export class ProductDetailsComponent implements OnInit {
           ordered_color: this.productSelectedColor,
           ordered_size: this.productSelectedSize,
         }
-
         let userId = this.user._id
       
         this.route.params.subscribe(params => {
@@ -107,6 +109,8 @@ export class ProductDetailsComponent implements OnInit {
               this.myAccount.sendCartChanged();
             });
         })
+
+        document.getElementById('added').innerHTML = 'Product added to cart';
       }
     }
   
