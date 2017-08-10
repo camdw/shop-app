@@ -1,8 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, OnChanges } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { ProductsService } from '../../services/products.service'
 import { SessionService } from '../../services/session.service';
 import { MyAccountService } from '../../services/my-account.service';
+import { NavService } from "../../services/navservice.service";
 
 @Component({
   selector: 'app-top-menu',
@@ -13,17 +14,39 @@ export class TopMenuComponent implements OnInit {
 
   productCategories;
   cartChangedSubscription: Subscription;
+  user = {
+    _id: "",
+    firstname: "",
+  };
 
   constructor(private product: ProductsService,
               private session: SessionService,
-              private account: MyAccountService) {
+              private account: MyAccountService,
+              private navservice: NavService
+            ) {
   }
 
-  user = JSON.parse(localStorage.getItem('user'));
+  
   cartItems = 0;
 
   ngOnInit() {
- 
+    
+    this.navservice.event.subscribe((data) => {
+      console.log("hola")
+      if (localStorage.getItem('user')) {
+        this.user = JSON.parse(localStorage.getItem('user'));
+        this.getCartNumber();  
+      }else{
+        console.log("else")
+        this.cartItems = 0;
+      }
+      
+    })
+
+    if (localStorage.getItem('user')) {
+      this.user = JSON.parse(localStorage.getItem('user'));
+    }
+
     this.product.getList()
       .subscribe((products) => {
         this.getProductCategories(products)
@@ -36,6 +59,8 @@ export class TopMenuComponent implements OnInit {
         console.log("Got message", data);
         this.getCartNumber();
       });
+    
+    
   }
 
   ngOnDestroy() {
@@ -43,25 +68,30 @@ export class TopMenuComponent implements OnInit {
   }
 
   getCartNumber() {
-    this.account.getCart(this.user._id)
-      .subscribe((theBehaviour) => {
-        this.cartItems = theBehaviour.current_cart.length
-    });
+    // console.log("lol", this.session.isAuthenticated)
+    
+      console.log("getCartNumber");
+      this.account.getCart(this.user._id)
+        .subscribe((theBehaviour) => {
+          this.cartItems = theBehaviour.current_cart.length
+      });
+      // this.account.getCart(this.user._id);
+    
   }
 
-    getProductCategories(products) {
-      let temp = [];
-       for (let product of products) {
-        if (temp.indexOf(product.category) == -1) {
-          temp.push(product.category);
-        }
+  getProductCategories(products) {
+    let temp = [];
+      for (let product of products) {
+      if (temp.indexOf(product.category) == -1) {
+        temp.push(product.category);
       }
-        this.productCategories = temp;
-    };
+    }
+      this.productCategories = temp;
+  };
 
-    logout() {
-      this.session.logout()
-      this.user = null;
-   }
+  logout() {
+    this.session.logout()
+    this.user = null;
+  }
 
 }

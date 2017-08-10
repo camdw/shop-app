@@ -19,6 +19,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
 import { MyCartComponent } from './components/my-cart/my-cart.component';
+import { NavService } from './services/navservice.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import { MyCartComponent } from './components/my-cart/my-cart.component';
     HttpModule,
     FormsModule,
   ],
-  providers: [ProductsService, SessionService, MyAccountService],
+  providers: [ProductsService, SessionService, MyAccountService, NavService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

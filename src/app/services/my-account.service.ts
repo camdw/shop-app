@@ -13,6 +13,8 @@ export class MyAccountService {
 
   private subject = new Subject<any>();
 
+  counter = 0;
+
   constructor(
     private http: Http,
     private route: ActivatedRoute,
@@ -45,6 +47,11 @@ sendCartChanged() {
 
 getCartChanged(): Observable<any> {
   return this.subject.asObservable();
+}
+
+incrementCounter() {
+  console.log("increment counter");
+  this.counter++;
 }
 
 

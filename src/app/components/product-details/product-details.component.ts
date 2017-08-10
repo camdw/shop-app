@@ -26,7 +26,7 @@ export class ProductDetailsComponent implements OnInit {
    constructor(
     private route: ActivatedRoute,
     private productService: ProductsService,
-    private myAccount: MyAccountService,
+    private account: MyAccountService,
     private session: SessionService,
     private http: Http) { }
 
@@ -106,7 +106,8 @@ export class ProductDetailsComponent implements OnInit {
         this.route.params.subscribe(params => {
           return this.http.put(`${this.BASE_URL}/products/addToCart`, {cartItem, userId} )
             .subscribe((res) => {
-              this.myAccount.sendCartChanged();
+              this.account.incrementCounter();
+              this.account.sendCartChanged();
             });
         })
 

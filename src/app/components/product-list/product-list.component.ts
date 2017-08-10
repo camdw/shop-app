@@ -17,7 +17,7 @@ export class ProductListComponent implements OnInit {
   productCategories;
   user = JSON.parse(localStorage.getItem('user'));
 
-  BASE_URL: string = 'https://licorne-shop-api.herokuapp.com/';
+  BASE_URL: string = 'https://licorne-shop-api.herokuapp.com';
 
 
   constructor(private productService: ProductsService,

@@ -1,33 +1,31 @@
- <nav>
+ <nav class='navbar'>
 
-  <div class="top-nav-menu">
-    <div class="home-link">
-      <a [routerLink]="''">Home</a>
-    </div>
-
-    <img class="logo" src="http://images.nicethings.es/ecommerce/logo.jpg" height=50px/>
+    <a [routerLink]="''"><img class="logo" src="../../../assets/logo_licorne.jpg" /></a>
     
-    <div class="login">
-      <div *ngIf="user !== null">
-        <p> Welcome {{ user.firstname }}! </p>
+    <p class='welcome-msg' *ngIf="this.session.isAuthenticated">
+      Welcome {{ this.user.firstname }}! 
+    </p>
+
+    <section class="login">
+      <!-- <div *ngIf="user !== null"> -->
+      <div *ngIf="this.session.isAuthenticated">
         <a class='myaccount' [routerLink]="['/myaccount']">My Account</a>
         <a class='logout' (click)="logout()">Logout</a>
       </div>
-      <div *ngIf="user === null">
+      <div *ngIf="!this.session.isAuthenticated">
         <a [routerLink]="['/login']">Login/Signup</a>
       </div>
-    </div>
-
-    <div class="cart">
-      <a class='mycart' [routerLink]="['/mycart']">My Cart - {{ cartItems }}</a>
-    </div>
-
-  </div>
+    </section>
   
-  <div class= "categories">
-    <div class="category" *ngFor = "let category of productCategories">
+  <ul class= "categories">
+    <li class="category" *ngFor = "let category of productCategories">
       <a [routerLink]="[category]">{{ category }}</a>
-    </div>
-  </div>
+    </li>
+  </ul>
 
-</nav> 
+</nav>
+
+<div class="cart">
+  <p>testing {{ this.account.counter }}
+  <a class='mycart' [routerLink]="['/mycart']">My Cart - {{ cartItems }}</a>
+</div>

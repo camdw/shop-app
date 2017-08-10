@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
 import { Router, CanActivate } from '@angular/router';
+import { NavService } from './navservice.service';
 
 @Injectable()
 export class SessionService implements CanActivate {
@@ -16,7 +17,8 @@ export class SessionService implements CanActivate {
 
   constructor(
     private http: Http,
-    private router: Router
+    private router: Router,
+    private navservice: NavService
   ) { }
 
   handleError(e) {
@@ -35,7 +37,9 @@ export class SessionService implements CanActivate {
 
       return this.http.get(`${this.BASE_URL}/ping`, options)
         .map((data) => {
+          
           if (data) {
+            
             this.isAuthenticated = true;
             this.token = token;
             this.user = JSON.parse(localStorage.getItem('user'))
@@ -47,6 +51,7 @@ export class SessionService implements CanActivate {
     }
     else {
       this.logout();
+      console.log(this.router.url)
       this.router.navigate(['/login']);
       return false;
     }
@@ -72,7 +77,7 @@ export class SessionService implements CanActivate {
           localStorage.setItem('user', JSON.stringify(this.user))
         }
         
-        return this.isAuthenticated;
+        // return this.isAuthenticated;
 
       }).catch(this.handleError);
   }
@@ -83,6 +88,8 @@ export class SessionService implements CanActivate {
     this.isAuthenticated = false;
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    
+    this.navservice.publish("");        
     this.router.navigate(['/login'])
   }
 

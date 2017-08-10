@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProductsService } from './services/products.service'
 import { SessionService } from './services/session.service'
+import { MyAccountService } from './services/my-account.service';
+
+
 
 @Component({
   selector: 'app-root',
@@ -9,11 +12,19 @@ import { SessionService } from './services/session.service'
 })
 export class AppComponent {
   title = 'FINAL PROJECT';
-
+  user = {
+    _id: "",
+    firstname: "",
+  };
   constructor(
     private session: SessionService,
-    private productService: ProductsService
+    private productService: ProductsService,
+    private account: MyAccountService
   ) { }
+
+  ngOnInit() {
+    
+  }
 
   logout() {
     this.session.logout();
