@@ -19,13 +19,12 @@
   
   <ul class= "categories">
     <li class="category" *ngFor = "let category of productCategories">
-      <a [routerLink]="[category]">{{ category }}</a>
+      <a [routerLink]="[category]">{{ category | uppercase }}</a>
     </li>
   </ul>
 
 </nav>
 
 <div class="cart">
-  <p>testing {{ this.account.counter }}
   <a class='mycart' [routerLink]="['/mycart']">My Cart - {{ cartItems }}</a>
 </div>

@@ -1,6 +1,7 @@
 html {
   box-sizing: border-box;
   height: 100%;
+  font-family: 'Open Sans', sans-serif;
 }
 
 *,
@@ -9,6 +10,10 @@ html {
   box-sizing: inherit;
   margin: 0;
   padding: 0;
+}
+
+h1 {
+    font-family: 'Raleway', sans-serif;
 }
 
 li {
@@ -40,6 +45,7 @@ li {
 .product-description {
     flex: 1 1 auto;
     align-self: auto;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .product-options {
@@ -55,10 +61,12 @@ li {
 .price .color-options .size-options .action-buttons {
     flex: 1 1 auto;
     align-self: auto;
+    font-family: 'Open Sans', sans-serif;
 }
 .size-options > div{
     cursor: pointer;
     border: 2px solid transparent;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .color-options {
@@ -194,6 +202,7 @@ li {
     padding: 1em;
     margin-bottom: 1em;
     display: block;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .price {

@@ -1,11 +1,11 @@
 
 .navbar {
     position: relative;
-    height: 100px;
+    height: 120px;
     width: 100%;
-    background-color: beige;
     border-bottom: 1px solid black;
     margin-bottom: 20px;
+    font-family: 'Raleway', sans-serif;
 }
 
 .logo {
@@ -18,10 +18,13 @@
     width: 100%;
     text-align: center;
     padding: 0 1em;
+    margin: 10px;
 }
 
 .categories .category {
     display: inline-block;
+    padding-right: .7em;
+    padding-left: .7em;
 }
 
 .categories .category a {
@@ -31,6 +34,7 @@
     text-decoration: none;
     border-bottom: 1px solid transparent;
     transition: all 300ms ease;
+    color: black;
 }
 
 .categories .category a:hover {
@@ -68,9 +72,13 @@
 .cart {
     position: absolute;
     right: 0;
-    background-color: beige;
     border-bottom: 1px solid black;
     border-left: 1px solid black;
     padding: 1em;
     margin-top: -20px;
+    font-family: 'Raleway', sans-serif;
+}
+
+.cart a {
+    color: black;
 }
