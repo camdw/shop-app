@@ -11,6 +11,9 @@
     text-align: center;
 }
 
+.price-colors {
+    display: block;
+}
 .product-price{
     text-align: center;
 }

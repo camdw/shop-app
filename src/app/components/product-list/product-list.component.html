@@ -4,16 +4,21 @@
     
     <div class="product col-xs-6 col-md-4" *ngFor="let product of products">
       <img class="product-image" src="http://images.nicethings.es/ecommerce/024/{{product?.mpn}}_{{product?.color[0].code}}_M.jpg" height=300px/> 
-      <h3 class="product-title">{{ product.title }}</h3>
-      <p class="product-price">{{ product.price }}€ - NOW {{ product.sale_price }}€</p>
-    
-      <div class="color-options">
-        <div class="color" *ngFor="let color of product.color" >
-          <div (click)="clickedColor(color)">
-            <img src="http://images.nicethings.es/ecommerce/opciones/{{product?.mpn}}_{{color.code}}.jpg" height=20px/>
-          </div>  
-        </div> 
+      <h4 class="product-title">{{ product.title }}</h4>
+      
+      
+      <div class="price-colors">
+        <p class="product-price">{{ product.price | number: '1.2-2' }} €</p>
+        <div class="color-options">
+          <div class="color" *ngFor="let color of product.color" >
+            <div (click)="clickedColor(color)">
+              <img src="http://images.nicethings.es/ecommerce/opciones/{{product?.mpn}}_{{color.code}}.jpg" height=20px/>
+            </div>  
+          </div> 
+        </div>
       </div>
+    
+
       <div class="details-favourite">
         <a class="btn btn-default" [routerLink]="['/products', product._id]">View Details</a>
         <a class="btn btn-default" (click)="addFavourite(product._id)">Add to Favourites</a>

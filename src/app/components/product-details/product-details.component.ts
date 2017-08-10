@@ -75,6 +75,7 @@ export class ProductDetailsComponent implements OnInit {
 
     clickedSize(size) {
       this.productSelectedSize = size;
+      console.log(this.productSelectedSize)
     }
 
     addFavourite() {
@@ -108,7 +109,12 @@ export class ProductDetailsComponent implements OnInit {
         })
       }
     }
+  
+    gotoImg(i) {
+      window.location.href = window.location.pathname + "#product-image-slide" + i;
+    }
 
+    
 
 }
 

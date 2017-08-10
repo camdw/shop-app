@@ -1,36 +1,69 @@
-<div class="product container">
-  <div class="row product-title"><h1>{{ product?.title }}</h1></div>
 
-<div class="image-descrpription">
-  <div class='row product-images'>
-    <img src="http://images.nicethings.es/ecommerce/024/{{product?.mpn}}_{{productSelectedColor}}_M.jpg" height=300px/>
+<h1 class="product-title">{{ product?.title }}</h1>
+
+<main class="product flex-container">
+  
+  <section class='product-images flex-item flex-container'>
+    <ul class="image-thumbnails flex-item">
+      <li>
+        <a (click)=gotoImg(1)><img src="http://images.nicethings.es/ecommerce/024/{{product?.mpn}}_{{productSelectedColor}}_M.jpg" /></a>
+      </li>
+      <li>
+        <a (click)=gotoImg(2)><img src="http://images.nicethings.es/ecommerce/024/{{product?.mpn}}_{{productSelectedColor}}_2_M.jpg" /></a>
+      </li>
+      <li>
+        <a (click)=gotoImg(3)><img src="http://images.nicethings.es/ecommerce/024/{{product?.mpn}}_{{productSelectedColor}}_3_M.jpg" /></a>
+      </li>
+      <li>
+        <a (click)=gotoImg(4)><img src="http://images.nicethings.es/ecommerce/024/{{product?.mpn}}_{{productSelectedColor}}_4_M.jpg" /></a>
+      </li>
+    </ul>
+
+    <ul class="product-image-slides flex-item">
+      <li id="product-image-slide1">
+        <img src="http://images.nicethings.es/ecommerce/024/{{product?.mpn}}_{{productSelectedColor}}_M.jpg" alt="" />
+      </li>
+      <li id="product-image-slide2">
+        <img src="http://images.nicethings.es/ecommerce/024/{{product?.mpn}}_{{productSelectedColor}}_2_M.jpg" alt="" />
+      </li>
+      <li id="product-image-slide3">
+        <img src="http://images.nicethings.es/ecommerce/024/{{product?.mpn}}_{{productSelectedColor}}_3_M.jpg" alt="" />
+      </li>
+      <li id="product-image-slide4">
+        <img src="http://images.nicethings.es/ecommerce/024/{{product?.mpn}}_{{productSelectedColor}}_4_M.jpg" alt="" />
+      </li>
+    </ul>
+    <!-- <img src="http://images.nicethings.es/ecommerce/024/{{product?.mpn}}_{{productSelectedColor}}_M.jpg" height=300px/>
     <img src="http://images.nicethings.es/ecommerce/024/{{product?.mpn}}_{{productSelectedColor}}_2_M.jpg" height=300px/>
     <img src="http://images.nicethings.es/ecommerce/024/{{product?.mpn}}_{{productSelectedColor}}_3_M.jpg" height=300px/>
-    <img src="http://images.nicethings.es/ecommerce/024/{{product?.mpn}}_{{productSelectedColor}}_4_M.jpg" height=300px/>
-  </div>
+    <img src="http://images.nicethings.es/ecommerce/024/{{product?.mpn}}_{{productSelectedColor}}_4_M.jpg" height=300px/> -->
+  </section>
 
-  <div class='row product-description'>{{ product?.description }}</div>
-  
-</div>
 
-  <div class="row product-options">
+  <section class="flex-item">
+    <p class='product-description'>{{ product?.description }}</p>
+    <p class="price">{{ product?.price | number: '1.2-2' }}€</p>
 
-    <div class="price"><p>{{ product?.price }}€ - NOW {{ product?.sale_price }}€</p></div>
 
-    <div class="color-options"> 
-      <div class="color" *ngFor="let productColor of productColors; let i = index">
-        <div [ngClass]="{selected: productColor === productSelectedColor}" (click)="clickedColor(productColor, i)"><img src="http://images.nicethings.es/ecommerce/opciones/{{product?.mpn}}_{{productColor}}.jpg" height=25px/></div> 
+    <div class="product-options">
+      <section class="color-options"> 
+        <div class="color" *ngFor="let productColor of productColors; let i = index">
+          <div [ngClass]="{selected: productColor === productSelectedColor}" (click)="clickedColor(productColor, i)">
+            <img src="http://images.nicethings.es/ecommerce/opciones/{{product?.mpn}}_{{productColor}}.jpg" height=25px/>
+          </div> 
+        </div>
+      </section>
+
+      <div class="size-options" *ngFor="let productSize of productSizes; let i = index">
+        <div [ngClass]="{selected: productSize === productSelectedSize}" (click)="clickedSize(productSize, i)">{{productSize}}</div>
       </div>
     </div>
 
-    <div class="size-options" *ngFor="let productSize of productSizes; let i = index">
-       <div [ngClass]="{selected: productSize === productSelectedSize}" (click)="clickedSize(productSize, i)">{{productSize}}</div>
-    </div>
-  
+
     <div class="action-buttons">
       <a class="btn btn-default" (click)="addToCart()">Add to Cart</a>
       <a class="btn btn-default" (click)="addFavourite()" >Add to Favourites</a>
     </div>
-    
-
-</div>
+      
+  </section>
+</main>
