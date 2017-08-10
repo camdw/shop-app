@@ -13,3 +13,11 @@
     flex: 0 1 auto;
     align-self: auto;
     }
+
+.items {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.table-responsive {
+    margin: 30px;
+}

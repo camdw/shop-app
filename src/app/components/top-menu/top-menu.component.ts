@@ -14,10 +14,8 @@ export class TopMenuComponent implements OnInit {
 
   productCategories;
   cartChangedSubscription: Subscription;
-  user = {
-    _id: "",
-    firstname: "",
-  };
+
+  user;
 
   constructor(private product: ProductsService,
               private session: SessionService,
@@ -32,12 +30,10 @@ export class TopMenuComponent implements OnInit {
   ngOnInit() {
     
     this.navservice.event.subscribe((data) => {
-      console.log("hola")
       if (localStorage.getItem('user')) {
         this.user = JSON.parse(localStorage.getItem('user'));
         this.getCartNumber();  
       }else{
-        console.log("else")
         this.cartItems = 0;
       }
       
@@ -68,14 +64,10 @@ export class TopMenuComponent implements OnInit {
   }
 
   getCartNumber() {
-    // console.log("lol", this.session.isAuthenticated)
-    
-      console.log("getCartNumber");
       this.account.getCart(this.user._id)
         .subscribe((theBehaviour) => {
           this.cartItems = theBehaviour.current_cart.length
       });
-      // this.account.getCart(this.user._id);
     
   }
 
@@ -92,6 +84,7 @@ export class TopMenuComponent implements OnInit {
   logout() {
     this.session.logout()
     this.user = null;
+    
   }
 
 

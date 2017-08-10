@@ -33,11 +33,11 @@ export class MyCartComponent implements OnInit {
   ngOnInit() {
 
     this.route.params.subscribe(params => {
-      // this.account.getCart(this.localUser._id)
-      //   .subscribe((theBehaviour) => {
-      //   this.cartItems = theBehaviour.current_cart
-      //   this.calculateTotal()
-      // });
+      this.account.getCart(this.localUser._id)
+        .subscribe((theBehaviour) => {
+        this.cartItems = theBehaviour.current_cart
+        this.calculateTotal()
+      });
     })
   }
 

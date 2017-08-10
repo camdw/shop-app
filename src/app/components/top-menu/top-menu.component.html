@@ -2,17 +2,17 @@
 
     <a [routerLink]="''"><img class="logo" src="../../../assets/logo_licorne.jpg" /></a>
     
-    <p class='welcome-msg' *ngIf="this.session.isAuthenticated">
+    <p class='welcome-msg' *ngIf="user !== null">
       Welcome {{ this.user.firstname }}! 
     </p>
 
     <section class="login">
-      <!-- <div *ngIf="user !== null"> -->
-      <div *ngIf="this.session.isAuthenticated">
-        <a class='myaccount' [routerLink]="['/myaccount']">My Account</a>
-        <a class='logout' (click)="logout()">Logout</a>
+       <div *ngIf="user !== null">  
+          <a class='myaccount' [routerLink]="['/myaccount']">My Account</a>
+          <a class='logout' (click)="logout()">Logout</a>
       </div>
-      <div *ngIf="!this.session.isAuthenticated">
+
+      <div *ngIf="user == null">
         <a [routerLink]="['/login']">Login/Signup</a>
       </div>
     </section>

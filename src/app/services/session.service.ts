@@ -90,7 +90,7 @@ export class SessionService implements CanActivate {
     localStorage.removeItem('user');
     
     this.navservice.publish("");        
-    this.router.navigate(['/login'])
+    this.router.navigate(['/'])
   }
 
   signup(user) {

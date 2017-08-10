@@ -1,5 +1,11 @@
+.products {
+    font-family: 'Open Sans', sans-serif;
+}
+
+
 .product {
     margin-bottom: 25px;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .product-image {
@@ -11,6 +17,9 @@
     text-align: center;
 }
 
+.price-colors {
+    display: block;
+}
 .product-price{
     text-align: center;
 }
@@ -47,6 +56,14 @@
 .btn{
     order: 0;
     flex: 0 1 auto;
-    align-self: auto;
+    align-self: center;
     margin: 20px;
+}
+
+.nav {
+    font-family: 'Raleway', sans-serif;
+}
+
+.h2 {
+    font-family: 'Open Sans', sans-serif;
 }
