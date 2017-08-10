@@ -18,7 +18,7 @@ export class MyAccountComponent implements OnInit {
   favouritesId = [];
   orders = []
   visible;
-  BASE_URL: string = 'http://localhost:3000';
+  BASE_URL: string = 'https://licorne-shop-api.herokuapp.com';
   
   error = null;
 

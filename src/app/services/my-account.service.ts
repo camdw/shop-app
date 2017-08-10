@@ -9,7 +9,7 @@ import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class MyAccountService {
-  BASE_URL: string = 'http://localhost:3000';
+  BASE_URL: string = 'https://licorne-shop-api.herokuapp.com';
 
   private subject = new Subject<any>();
 

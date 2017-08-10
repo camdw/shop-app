@@ -6,7 +6,7 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class ProductsService {
-  BASE_URL: string = 'http://localhost:3000';
+  BASE_URL: string = 'https://licorne-shop-api.herokuapp.com';
 
   constructor(private http: Http) { }
 

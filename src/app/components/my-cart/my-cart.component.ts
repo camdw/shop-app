@@ -18,7 +18,7 @@ export class MyCartComponent implements OnInit {
   cartItemsId = [];
   cartTotal = 0;
   orderItems = []
-  BASE_URL: string = 'http://localhost:3000';
+  BASE_URL: string = 'https://licorne-shop-api.herokuapp.com';
   
   error = null;
 

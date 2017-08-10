@@ -14,7 +14,7 @@
       <li>
         <a (click)=gotoImg(3)><img src="http://images.nicethings.es/ecommerce/024/{{product?.mpn}}_{{productSelectedColor}}_3_M.jpg" /></a>
       </li>
-      <li *ngIf="product.category != 'Accessories'">
+      <li *ngIf="product?.category != 'Accessories'">
         <a (click)=gotoImg(4)><img src="http://images.nicethings.es/ecommerce/024/{{product?.mpn}}_{{productSelectedColor}}_4_M.jpg" /></a>
       </li>
     </ul>

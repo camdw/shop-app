@@ -2,7 +2,7 @@
 
   <div class="top-nav-menu">
     <div class="home-link">
-      <a href="http://localhost:4200/">Home</a>
+      <a [routerLink]="''">Home</a>
     </div>
 
     <img class="logo" src="http://images.nicethings.es/ecommerce/logo.jpg" height=50px/>
@@ -10,23 +10,23 @@
     <div class="login">
       <div *ngIf="user !== null">
         <p> Welcome {{ user.firstname }}! </p>
-        <a class='myaccount' href="http://localhost:4200/myaccount">My Account</a>
+        <a class='myaccount' [routerLink]="['/myaccount']">My Account</a>
         <a class='logout' (click)="logout()">Logout</a>
       </div>
       <div *ngIf="user === null">
-        <a href="http://localhost:4200/login">Login/Signup</a>
+        <a [routerLink]="['/login']">Login/Signup</a>
       </div>
     </div>
 
     <div class="cart">
-      <a class='mycart' href="http://localhost:4200/mycart">My Cart - {{ cartItems }}</a>
+      <a class='mycart' [routerLink]="['/mycart']">My Cart - {{ cartItems }}</a>
     </div>
 
   </div>
   
   <div class= "categories">
     <div class="category" *ngFor = "let category of productCategories">
-      <a href="http://localhost:4200/{{category}}">{{ category }}</a>
+      <a [routerLink]="[category]">{{ category }}</a>
     </div>
   </div>
 
