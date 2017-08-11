@@ -56,11 +56,8 @@
 .btn{
     order: 0;
     flex: 0 1 auto;
-    align-self: center;
-    margin: auto;
-    display: block;
-    width: 50%;
-    margin-top: 1em;
+    align-self: auto;
+    margin: 10px 20px 10px 20px;
 }
 
 .nav {

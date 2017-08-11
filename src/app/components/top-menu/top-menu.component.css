@@ -49,15 +49,18 @@
 .login {
     position: absolute;
     
-    top: 5px;
+    
 }
 
 .login {
     right: 5px;
+    top: 5px;
 }
 
 .welcome-msg {
     left: 5px;
+    top: 30px;
+    font-size: 15px
 }
 
 .login a {
@@ -86,3 +89,10 @@
 .cart a {
     color: black;
 }
+
+ .credit {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+  }
+

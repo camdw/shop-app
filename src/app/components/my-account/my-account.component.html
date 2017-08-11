@@ -27,7 +27,8 @@
       </div>
 
       <div class="details">
-         <a class="btn btn-default" [routerLink]="['/products', favourite._id]">View Details</a> 
+         <a class="btn btn-default" [routerLink]="['/products', favourite._id]">View Details</a>
+         <a class="btn btn-default" (click)="removeFavourite(favourite._id)">Remove</a>
       </div>
     </div>
     </div>

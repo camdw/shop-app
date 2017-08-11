@@ -28,6 +28,8 @@ export class TopMenuComponent implements OnInit {
   cartItems = 0;
 
   ngOnInit() {
+
+    
     
     this.navservice.event.subscribe((data) => {
       if (localStorage.getItem('user')) {
@@ -56,6 +58,7 @@ export class TopMenuComponent implements OnInit {
         this.getCartNumber();
       });
     
+      console.log(this.user)
     
   }
 
@@ -87,5 +90,5 @@ export class TopMenuComponent implements OnInit {
     
   }
 
-
+ 
 }

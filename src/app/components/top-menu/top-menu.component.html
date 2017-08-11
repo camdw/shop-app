@@ -2,17 +2,21 @@
 
     <a [routerLink]="''"><img class="logo" src="../../../assets/logo_licorne.jpg" /></a>
     
-    <p class='welcome-msg' *ngIf="user !== null">
+    <p class='credit'>
+      Products: courtesy of <a class='nice-things' href="https://www.nicethingspalomas.com">Nice Things Paloma S.</a> 
+    </p>
+
+    <p class='welcome-msg' *ngIf="user !== undefined">
       Welcome {{ this.user.firstname }}! 
     </p>
 
     <section class="login">
-       <div *ngIf="user !== null">  
+       <div *ngIf="user !== undefined">  
           <a class='myaccount' [routerLink]="['/myaccount']">My Account</a>
           <a class='logout' (click)="logout()">Logout</a>
       </div>
 
-      <div *ngIf="user == null">
+      <div *ngIf="user == undefined">
         <a [routerLink]="['/login']">Login/Signup</a>
       </div>
     </section>
