@@ -26,7 +26,7 @@
     justify-content: center;
     align-content: stretch;
     align-items: flex-start;
-    margin: 10px;
+    margin: 0px 10px 0px 10px;
 }
 
 .color {
@@ -52,5 +52,9 @@
     order: 0;
     flex: 0 1 auto;
     align-self: auto;
-    margin: 20px;
+    margin: 10px 20px 10px 20px;
+}
+
+#added {
+    text-align: center;
 }

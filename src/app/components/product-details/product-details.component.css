@@ -19,8 +19,6 @@ li {
     list-style-type: none;
 }
 
-
-
 .product-title {
     margin: auto;
     text-align: center;
@@ -194,9 +192,9 @@ li {
     width: 66%;
 }
 
-.product-image-slides img {
+ .product-image-slides img {
     border: 1px solid black;
-}
+} 
 
 .price,
 .action-buttons,

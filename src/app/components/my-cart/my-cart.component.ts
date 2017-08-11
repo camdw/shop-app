@@ -117,6 +117,7 @@ export class MyCartComponent implements OnInit {
         })
     });
 
+      document.getElementById('added').innerHTML = 'Order placed!';
 
   }
 

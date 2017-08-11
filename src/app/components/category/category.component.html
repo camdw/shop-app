@@ -3,7 +3,7 @@
     
     <div class="product col-xs-6 col-md-4" *ngFor="let product of products">
       <img class="product-image" src="http://images.nicethings.es/ecommerce/024/{{product?.mpn}}_{{product?.color[0].code}}_M.jpg" height=300px/> 
-      <h3 class="product-title">{{ product.title }}</h3>
+      <h4 class="product-title">{{ product.title }}</h4>
       <p class="product-price">{{ product.price | number: '1.2-2' }} €</p>
     
       <div class="color-options">

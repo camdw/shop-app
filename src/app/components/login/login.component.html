@@ -1,20 +1,24 @@
 <h2>Login</h2>
 
-<form>
+<div class="login-container">
+<form class="login">
   <div *ngIf="error">
     {{ error }}
   </div>
   <p>
     <label for="email">Email</label>
-    <input type="text" [(ngModel)]="user.email" name="email">
+    <input type="email" [(ngModel)]="user.email" name="email">
   </p>
 
   <p>
     <label for="password">Password</label>
-    <input type="text" [(ngModel)]="user.password" name="password">
+    <input type="password" [(ngModel)]="user.password" name="password">
   </p>
 
   <button (click)="login()">Login</button>
 </form>
+</div>
+<br>
+
 
 <app-signup></app-signup>

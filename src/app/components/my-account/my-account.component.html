@@ -13,7 +13,7 @@
     <div *ngIf="visible === 'favourites'">
       <div class="product col-xs-6 col-md-4" *ngFor="let favourite of favourites">
         <img class="product-image" src="http://images.nicethings.es/ecommerce/024/{{favourite?.mpn}}_{{favourite?.color[0].code}}_M.jpg" height=300px/> 
-      <h3 class="product-title">{{ favourite?.title }}</h3>
+      <h4 class="product-title">{{ favourite?.title }}</h4>
     
        <div class="price-colors">
         <p class="product-price">{{ favourite.price | number: '1.2-2' }} €</p>
